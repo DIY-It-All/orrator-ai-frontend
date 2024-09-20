@@ -49,11 +49,26 @@ function Hero() {
       </div>
   );
 }
+
+function Footer(){
+  return (
+    <div className="bg-gray-900 p-4 text-gray-500 font-extralight text-center">
+      <div className="flex justify-evenly py-5">
+        <a href="" className="">Careers</a>
+        <a href="" className="">Careers</a>
+        <a href="" className="">Careers</a>
+        <a href="" className="">Careers</a>
+      </div>
+      <p>© 2021 Orrator-AI. All rights reserved.</p>
+    </div>
+  );
+}
 export default function Home() {
   return (
     <>
       <NavBarLM />
       <Hero />
+      <Footer />
     </>
   );
 }
