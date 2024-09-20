@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <div className="relative text-center">
+    <div className="relative text-center mt-6">
       <Image
         src="/images.jpg"
         alt="hero_img"
