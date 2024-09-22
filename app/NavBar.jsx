@@ -1,6 +1,8 @@
-import Image from "next/image";
-import { Account } from "./Account";
-export function NavBarLM() {
+
+import Image from "next/image"; 
+import ConnectWalletButtonProvider from "./components/ConnectWalletButtonProvider";
+export function NavBar() {
+
   return (
     <div className="p-5 flex flex-wrap flex-col md:flex-row items-center shadow-[0_35px_60px_10px_rgba(255,255,255,0.017)]">
       <a className="flex title-font font-medium items-center mb-4 md:mb-0">
@@ -13,7 +15,10 @@ export function NavBarLM() {
         <a className="mx-2 my-1">Resources</a>
       </div>
       <div className="flex">
-        <Account></Account>
+        
+      <div className="flex gap-4 px-6">
+      </div>
+        <ConnectWalletButtonProvider/>
       </div>
     </div>
   );
