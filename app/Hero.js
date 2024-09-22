@@ -11,7 +11,7 @@ export function Hero() {
         className="w-[90%] m-auto rounded-lg" />
       <div className="w-full absolute bottom-0 left-0 text-center p-4 pb-10 ">
         <h2 className="text-4xl font-bold w-[90%] m-auto text-left">
-          Master your next interview or presentation with Orrator-AI
+          Master your next interview or presentation with Orator-AI
         </h2>
         <h2 className="w-[90%] m-auto text-left py-4">
           Get AI-powered feedback on your speaking skills. Whether you're
