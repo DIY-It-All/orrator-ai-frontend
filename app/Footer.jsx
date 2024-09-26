@@ -15,7 +15,7 @@ export function Footer() {
           Careers
         </a>
       </div>
-      <p>© 2021 Orator-AI. All rights reserved.</p>
+      <p>© 2024 Orator-AI. All rights reserved.</p>
     </div>
   );
 }

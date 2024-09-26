@@ -1,25 +1,96 @@
-
-import Image from "next/image"; 
+'use client'
+import { useState } from "react";
+import Image from "next/image";
 import ConnectWalletButtonProvider from "./components/ConnectWalletButtonProvider";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi"; // Importing hamburger and close icons
+
 export function NavBar() {
+  const [isOpen, setIsOpen] = useState(false); // State to manage open/close of mobile menu
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Toggles menu state
+  };
 
   return (
-    <div className="p-5 flex flex-wrap flex-col md:flex-row items-center shadow-[0_35px_60px_10px_rgba(255,255,255,0.017)]">
-      <a className="flex title-font font-medium items-center mb-4 md:mb-0">
-        <Image src="/favicon.ico" width={40} height={40} alt="/logo.png" />
-        <span className="px-3 max-sm:hidden">Orator-AI</span>
-      </a>
-      <div className="md:ml-auto md:mr-4 flex flex-row items-center text-base justify-center max-sm:flex-col">
-        <a className="mx-2 my-1">How It Works</a>
-        <a className="mx-2 my-1">Pricing</a>
-        <a className="mx-2 my-1">Resources</a>
+    <nav className="p-5 bg-slate-900 rounded-3xl shadow-[0_35px_60px_10px_rgba(255,255,255,0.017)]">
+      <div className="flex justify-between items-center">
+        {/* Logo and Branding */}
+        <a className="flex title-font font-medium items-center">
+          <Image src="/logo.png" width={40} height={40} alt="logo" />
+          <span className="px-3 text-gradient font-bold text-2xl tracking-wider  sm:inline">
+            Orator-AI
+          </span>
+        </a>
+
+        {/* Hamburger Icon for Mobile */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none"
+          >
+            {isOpen ? (
+              <HiOutlineX className="w-8 h-8" />
+            ) : (
+              <HiOutlineMenuAlt3 className="w-8 h-8" />
+            )}
+          </button>
+        </div>
+
+        {/* Centered Navigation Links (hidden on mobile) */}
+        <div className="hidden md:flex md:items-center text-white space-x-6">
+          <a
+            href="#"
+            className="hover:text-gray-300 transition duration-200 ease-in-out font-semibold uppercase tracking-widest"
+          >
+            How It Works
+          </a>
+          <a
+            href="#"
+            className="hover:text-gray-300 transition duration-200 ease-in-out font-semibold uppercase tracking-widest"
+          >
+            Pricing
+          </a>
+          <a
+            href="#"
+            className="hover:text-gray-300 transition duration-200 ease-in-out font-semibold uppercase tracking-widest"
+          >
+            Resources
+          </a>
+        </div>
+
+        {/* Connect Wallet Button */}
+        <div className="hidden md:flex gap-4 px-6">
+          <ConnectWalletButtonProvider />
+        </div>
       </div>
-      <div className="flex">
-        
-      <div className="flex gap-4 px-6">
-      </div>
-        <ConnectWalletButtonProvider/>
-      </div>
-    </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden flex flex-col mt-4 space-y-4 text-white">
+          <a
+            href="#"
+            className="hover:text-gray-300 transition duration-200 ease-in-out font-semibold uppercase tracking-widest"
+          >
+            How It Works
+          </a>
+          <a
+            href="#"
+            className="hover:text-gray-300 transition duration-200 ease-in-out font-semibold uppercase tracking-widest"
+          >
+            Pricing
+          </a>
+          <a
+            href="#"
+            className="hover:text-gray-300 transition duration-200 ease-in-out font-semibold uppercase tracking-widest"
+          >
+            Resources
+          </a>
+          {/* Connect Wallet Button in Mobile Menu */}
+          <div className="flex justify-center">
+            <ConnectWalletButtonProvider />
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
