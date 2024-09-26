@@ -6,7 +6,6 @@ export default function Home() {
     <>
       <div className="flex w-full flex-col">
         <Hero />
-        <div className="divider"></div>
         <Content />
       </div>
     </>
