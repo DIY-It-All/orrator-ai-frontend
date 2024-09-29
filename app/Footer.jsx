@@ -11,9 +11,9 @@ export function Footer() {
                 Orator-AI    
             </a> */}
           <span className="block text-sm text-center text-gray-500">
-            © 2021-2022 Orator-AI™. All Rights Reserved.
+            © 2024 Orator-AI™. All Rights Reserved.
           </span>
-          <ul className="flex justify-center mt-5 space-x-5">
+          {/* <ul className="flex justify-center mt-5 space-x-5">
             <li>
               <a href="#" className="text-gray-500 hover:text-gray-900">
                 <svg
@@ -90,7 +90,7 @@ export function Footer() {
                 </svg>
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </footer>

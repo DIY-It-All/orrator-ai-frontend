@@ -9,7 +9,7 @@ export function Content() {
               <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 ">
                 About Orator-AI
               </h2>
-              <p className="mb-8 font-light lg:text-xl">
+              <p className="mb-8 font-regular lg:text-xl">
                 Log into the exiting world of AI enabled speech coaching.
                 Orator-AI is a platform that helps you improve your speaking
                 skills by providing instant feedback on your performance.
@@ -71,7 +71,7 @@ export function Content() {
                   </span>
                 </li>
               </ul>
-              <p className="mb-8 font-light lg:text-xl">
+              <p className="mb-8 font-regular lg:text-xl">
                 Deliver great services fast - so you can be the best you can be.
               </p>
             </div>
@@ -110,14 +110,14 @@ export function Content() {
             <figcaption className="flex items-center justify-center mt-6 space-x-3">
               <Image
                 className="w-6 h-6 rounded-full"
-                src="/image.jpg"
+                src="/fpf.png"
                 alt="profile picture"
                 width={1920}
                 height={1080}
-              />
+              /><span className="font-bold pr-[3px]">.</span>Jivesh Kalra
               <div className="flex items-center divide-x-2 divide-gray-500 700">
                 <div className="pr-3 font-medium text-gray-900 "></div>
-                <div className="pl-3 text-sm font-light text-gray-500 400"></div>
+                <div className="pl-3 text-sm font-regular text-gray-500 400"></div>
               </div>
             </figcaption>
           </figure>
@@ -130,12 +130,12 @@ export function Content() {
             <h2 className="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 ">
               Level Up Your Presentaion Skills Today.
             </h2>
-            <p className="mb-6 font-light text-gray-500 400 md:text-lg">
+            <p className="mb-10 font-regular text-gray-500 400 md:text-lg">
               Orator-AI is here to help you conquer you next Interveiw.
             </p>
             <a
               href="#"
-              className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 600 purple-700 focus:outline-none purple-800"
+              className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-xl px-5 py-5 mr-2 my-2 600 purple-700 focus:outline-none purple-800"
             >
               Get Started
             </a>
