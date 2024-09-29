@@ -1,7 +1,9 @@
 "use client";
-import React from "react";
+import React,{useState} from "react";
 
 export default function Dashboard() {
+  const [video_uploaded,SetVideoUploaded]= useState(false)
+  const [video,SetVideo]= useState()
   return (
     <div className="">
       <section className="bg-gray-50 800">
@@ -35,17 +37,18 @@ export default function Dashboard() {
               accept=".mp4"
               className="hidden"
               onChange={(ev) => {
-                console.log(ev.target.files[0]);
-                document.querySelector("video").src = URL.createObjectURL(ev.target.files[0]);
-                document.querySelector("#continue").classList.remove("hidden");
+                const videoFile = ev.target.files[0]; 
+                SetVideo(videoFile); 
+                SetVideoUploaded(true); 
+                document.querySelector("video").src = URL.createObjectURL(videoFile);
                 document.querySelector("video").pause();
               }}
             />
 
-
-                        <a
+<div className={video_uploaded ? 'contents' : 'hidden '}>
+<a
               href="#"
-              className="hidden text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 600 gray-700 focus:outline-none gray-800"
+              className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 600 gray-700 focus:outline-none gray-800"
               id="continue"
               onClick={() => {
                 console.log("loading next page");
@@ -53,6 +56,8 @@ export default function Dashboard() {
             >
               Continue
             </a>
+</div>
+              
           </div>
         </div>
       </section>

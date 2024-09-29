@@ -77,7 +77,7 @@ export function NavBar() {
 
     <nav className="bg-white border-gray-200 py-2.5 text-black">
             <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-                <a href="#" className="flex items-center">
+                <a href="./" className="flex items-center">
                     <img src="/v1.svg" className="h-6 mr-3 sm:h-9" alt="Orator-AI Logo" />
                     <span className="self-center text-xl font-semibold whitespace-nowrap ">Orator-AI</span>
                 </a>
