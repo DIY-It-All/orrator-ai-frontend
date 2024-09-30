@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { FileInput, Label, Progress } from "flowbite-react";
-import ProcessVideo from "../actions/processVideo";
-import { useRouter } from 'next/navigation';
+import ProcessVideo from "../actions/processVideo"; 
 
 export default function Dashboard() {
   const [vid_uploaded, setVidUploaded] = React.useState(false);
@@ -11,16 +10,13 @@ export default function Dashboard() {
   const [ai_output , setAIOutput] = React.useState("");
   const [got_ai_output , setGotAIOutput] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-
-  const router = useRouter();  // Initialize the Next.js router
-
+ 
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
   }
   useEffect(() => {   
     if (got_ai_output) {
-      console.log(ai_output); 
-      
+
     }
 
     if (loading && progress != 100 && !ai_output && ai_output.length == 0) {

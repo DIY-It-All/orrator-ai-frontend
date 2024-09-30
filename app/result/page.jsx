@@ -2,8 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Accordion, Banner } from "flowbite-react";
 import { Tabs } from "flowbite-react";
-import Image from "next/image";
-import { useRouter } from 'next/navigation';
+import Image from "next/image"; 
 
 export default function aiOutput() {
   let temp_res = {
@@ -54,16 +53,8 @@ export default function aiOutput() {
       score: 82,
     },
     // failed: "teu"
-  }
-  const router = useRouter();
-  const [aiOutput, setAIOutput] = useState(temp_res);
-  useEffect(() => {
-    if (router.query.aiOutput) {
-      const output = JSON.parse(router.query.aiOutput);  // Parse the AI output
-      setAIOutput(output);
-    }
-  }, [router.query.aiOutput]);
- 
+  } 
+  const [aiOutput, setAIOutput] = useState(temp_res); 
 
   const tabs_theme = {
     base: "flex flex-col gap-2",
