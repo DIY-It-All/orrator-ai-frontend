@@ -58,11 +58,17 @@ export default function aiOutput() {
   useEffect(() => {
     let ai_output = localStorage.getItem("ai_output");
     if (ai_output) {
+      try{
       let temp_ai_output = JSON.parse(ai_output);
       temp_ai_output.llm_emotion_analysis = JSON.parse(temp_ai_output.llm_emotion_analysis);
       temp_ai_output.llm_speech_analysis = JSON.parse(temp_ai_output.llm_speech_analysis);
       setAIOutput(temp_ai_output);
-
+      } catch(e){
+        console.log(e);
+        window.alert("Some error occured while fetching the data, kindly retry again");
+        localStorage.removeItem("ai_output");
+        
+      }
     }
   }, []);
   const tabs_theme = {
