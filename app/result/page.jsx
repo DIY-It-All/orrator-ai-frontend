@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
-import { Accordion, Tabs, Banner, Alert } from "flowbite-react";
+import React, { useEffect, useRef, useState } from "react";
+import { Accordion, Banner } from "flowbite-react";
+import { Tabs } from "flowbite-react";
 import Image from "next/image";
 export default function Result() {
   let result = {
@@ -50,6 +51,7 @@ export default function Result() {
         "The overall speed was moderate, with some moments where the presenter seemed to slow down to gather thoughts. It would be beneficial to practice the pitch to deliver it at a slightly faster pace while maintaining clarity.",
       score: 82,
     },
+    // failed: "teu"
   };
 
   const tabs_theme = {
@@ -111,11 +113,48 @@ export default function Result() {
     },
     tabpanel: "py-3",
   };
+  function lerp(start, end, amt) {
+    return (1 - amt) * start + amt * end;
+  }
+  const [score, setScore] = React.useState(0);
+  const tabsRef = useRef(null);
+  const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() =>
+    setScore(
+      lerp(
+        score,
+        result.llm_speech_analysis.score,
+        0.01 * (activeTab == 3 ? 1 : 0)
+      )
+    )
+  );
   if (result.failed) {
+    return (
+      <>
+        <p className="text-center font-black text-5xl w-[80vw] m-auto">
+          Could not fetch the tests results right now.
+          <br />
+          Please try again later
+        </p>
+      </>
+    );
   } else {
     return (
       <>
-        <Tabs aria-label="Default tabs" variant="default" theme={tabs_theme} className="w-[90%] m-auto">
+        <Tabs
+          aria-label="Default tabs"
+          variant="default"
+          theme={tabs_theme}
+          className="w-[90%] m-auto"
+          ref={tabsRef}
+          onActiveTabChange={(tab) => {
+            setActiveTab(tab);
+            if(tab != 3) {
+              setScore(0);
+            }
+          }}
+        >
           <Tabs.Item title="Emotion Review  " active>
             <div className="w-[90%] m-auto flex flex-col items-center text-center px-8">
               <p className="font-black text-3xl">
@@ -181,12 +220,16 @@ export default function Result() {
           <Tabs.Item title="Speech Review  ">
             <Accordion>
               <Accordion.Panel>
-                <Accordion.Title>Title</Accordion.Title>
-                <Accordion.Content>hello</Accordion.Content>
+                <Accordion.Title>Noticable Features</Accordion.Title>
+                {result.llm_speech_analysis.good.map((x, i) => {
+                  return <Accordion.Content>{x}</Accordion.Content>;
+                })}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title>Title</Accordion.Title>
-                <Accordion.Content>hello</Accordion.Content>
+                <Accordion.Title>Noticable Mistakes</Accordion.Title>
+                {result.llm_speech_analysis.bad.map((x, i) => {
+                  return <Accordion.Content>{x}</Accordion.Content>;
+                })}
               </Accordion.Panel>
             </Accordion>
           </Tabs.Item>
@@ -223,7 +266,7 @@ export default function Result() {
           </Tabs.Item>
 
           <Tabs.Item title="Overall  ">
-            <div className="w-screen flex flex-col items-center">
+            <div className="w-[100%] flex flex-col items-center">
               <svg
                 width="160"
                 height="160"
@@ -244,12 +287,13 @@ export default function Result() {
                   cy="80"
                   fill="transparent"
                   stroke={`hsl(${
-                    (result.llm_speech_analysis.score / 100.0) * 120.0
+                    (parseInt(score) / 100.0) * 120.0
                   }deg,100%,50%)`}
                   strokeWidth="12px"
                   strokeDasharray="439.6px"
+                  strokeLinecap="round"
                   strokeDashoffset={`${
-                    439.6 * ((100 - result.llm_speech_analysis.score) / 100)
+                    439.6 * ((100 - parseInt(score)) / 100)
                   }px`}
                 ></circle>
               </svg>
