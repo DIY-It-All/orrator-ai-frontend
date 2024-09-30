@@ -5,9 +5,12 @@ import { FileInput, Label, Progress } from "flowbite-react";
 export default function Dashboard() {
   const [vid_uploaded, setVidUploaded] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
+  function lerp(start, end, amt) {
+    return (1 - amt) * start + amt * end;
+  }
   useEffect(() => {
     if (vid_uploaded && progress != 100) {
-      setProgress(progress + Math.random() * Math.random() / 100);
+      setProgress(lerp(progress, 101, 0.001));
       if (progress > 100) {
         setProgress(100);
         setTimeout(() => {

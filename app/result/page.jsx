@@ -287,13 +287,13 @@ export default function Result() {
                   cy="80"
                   fill="transparent"
                   stroke={`hsl(${
-                    (parseInt(score) / 100.0) * 120.0
+                    (score / 100.0) * 120.0
                   }deg,100%,50%)`}
                   strokeWidth="12px"
                   strokeDasharray="439.6px"
                   strokeLinecap="round"
                   strokeDashoffset={`${
-                    439.6 * ((100 - parseInt(score)) / 100)
+                    439.6 * ((100 - score) / 100)
                   }px`}
                 ></circle>
               </svg>
