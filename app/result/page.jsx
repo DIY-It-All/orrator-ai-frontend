@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Accordion, Banner } from "flowbite-react";
 import { Tabs } from "flowbite-react";
 import Image from "next/image";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function aiOutput() {
   let temp_res = {

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { FileInput, Label, Progress } from "flowbite-react";
 import ProcessVideo from "../actions/processVideo";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const [vid_uploaded, setVidUploaded] = React.useState(false);
@@ -17,21 +17,28 @@ export default function Dashboard() {
     return (1 - amt) * start + amt * end;
   }
   useEffect(() => {
-    if (loading && progress != 100) {
-      setProgress(lerp(progress, 10, 0.00002));
-      if (progress > 100) {
-        setProgress(100);
-        // setTimeout(() => {
-        //   window.location.href = "/result";
-        // })
-      }
-    }else if (!loading && ai_output && ai_output.length > 0) {
+    console.log(loading);
+    console.log(ai_output);
+    console.log(!loading  && ai_output.length > 0);
+    console.log((loading && progress != 100 && !ai_output && ai_output.length == 0));
+    if (!loading && ai_output && ai_output.length > 0) {
       console.log(ai_output); 
       router.push({
         pathname: '/result',
         query: { aiOutput: JSON.stringify(ai_output) },  
       });
     }
+
+    if (loading && progress != 100 && !ai_output && ai_output.length == 0) {
+      setProgress(lerp(progress, 99, 0.0005));
+      if (progress > 100) {
+        setProgress(100);
+        // setTimeout(() => {
+        //   window.location.href = "/result";
+        // })
+      }
+    }
+    
   },[loading,progress,ai_output]);
 
   let html = <>Error -&gt help</>;
