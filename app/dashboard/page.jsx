@@ -9,28 +9,22 @@ export default function Dashboard() {
   const [video, setVideo] = React.useState(null);
   const [progress, setProgress] = React.useState(0);
   const [ai_output , setAIOutput] = React.useState("");
-  const [loading,setLoading] = React.useState(false);
+  const [got_ai_output , setGotAIOutput] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const router = useRouter();  // Initialize the Next.js router
 
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
   }
-  useEffect(() => {
-    console.log(loading);
-    console.log(ai_output);
-    console.log(!loading  && ai_output.length > 0);
-    console.log((loading && progress != 100 && !ai_output && ai_output.length == 0));
-    if (!loading && ai_output && ai_output.length > 0) {
+  useEffect(() => {   
+    if (got_ai_output) {
       console.log(ai_output); 
-      router.push({
-        pathname: '/result',
-        query: { aiOutput: JSON.stringify(ai_output) },  
-      });
+      
     }
 
     if (loading && progress != 100 && !ai_output && ai_output.length == 0) {
-      setProgress(lerp(progress, 99, 0.0005));
+      setProgress(lerp(progress, 99, 0.0002));
       if (progress > 100) {
         setProgress(100);
         // setTimeout(() => {
@@ -144,8 +138,8 @@ export default function Dashboard() {
                   console.log("loading next page");
                   setVidUploaded(true);
                   setLoading(true);
-                  let res =  await ProcessVideo(video);
-                  console.log(res)
+                  let res =  await ProcessVideo(video); 
+                  setGotAIOutput(true);
                   setAIOutput(res);
                   setLoading(false); 
                 }}
