@@ -62,7 +62,7 @@ export default function aiOutput() {
       temp_ai_output.llm_emotion_analysis = JSON.parse(temp_ai_output.llm_emotion_analysis);
       temp_ai_output.llm_speech_analysis = JSON.parse(temp_ai_output.llm_speech_analysis);
       setAIOutput(temp_ai_output);
-      
+
     }
   }, []);
   const tabs_theme = {
@@ -287,7 +287,7 @@ export default function aiOutput() {
                 aiOutput.llm_speech_analysis.improvements
                   ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
                       return (
-                        <Accordion.Content>{x.toString}</Accordion.Content>
+                        <Accordion.Content>{x.toString()}</Accordion.Content>
                       );
                     })
                   : "No Improvements Found"}
