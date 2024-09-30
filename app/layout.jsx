@@ -3,7 +3,7 @@ import "./globals.css";
 import { NavBar } from "./NavBar";
 
 export const metadata = {
-  title: "Orrator-AI",
+  title: "Orator-AI",
   description: "Powerup your speaking skills and ace thst upcoming interview with out AI powered speaking coach",
 };
 
