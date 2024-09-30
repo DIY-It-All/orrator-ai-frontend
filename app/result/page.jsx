@@ -286,7 +286,7 @@ export default function aiOutput() {
                   : "No Suggestions Found"}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title>Verbal Improvments</Accordion.Title>
+                <Accordion.Title>Verbal Improvements</Accordion.Title>
 
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.improvements
