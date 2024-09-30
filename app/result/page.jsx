@@ -3,8 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Accordion, Banner } from "flowbite-react";
 import { Tabs } from "flowbite-react";
 import Image from "next/image";
-export default function Result() {
-  let result = {
+import { useRouter } from 'next/router';
+
+export default function aiOutput() {
+  let temp_res = {
     llm_emotion_analysis: {
       common_emotion: "Anger",
       emotional_analysis: {
@@ -52,7 +54,16 @@ export default function Result() {
       score: 82,
     },
     // failed: "teu"
-  };
+  }
+  const router = useRouter();
+  const [aiOutput, setAIOutput] = useState(temp_res);
+  useEffect(() => {
+    if (router.query.aiOutput) {
+      const output = JSON.parse(router.query.aiOutput);  // Parse the AI output
+      setAIOutput(output);
+    }
+  }, [router.query.aiOutput]);
+ 
 
   const tabs_theme = {
     base: "flex flex-col gap-2",
@@ -124,16 +135,16 @@ export default function Result() {
     setScore(
       lerp(
         score,
-        result.llm_speech_analysis.score,
+        aiOutput.llm_speech_analysis.score,
         0.01 * (activeTab == 3 ? 1 : 0)
       )
     )
   );
-  if (result.failed) {
+  if (aiOutput.failed) {
     return (
       <>
         <p className="text-center font-black text-5xl w-[80vw] m-auto">
-          Could not fetch the tests results right now.
+          Could not fetch the tests aiOutputs right now.
           <br />
           Please try again later
         </p>
@@ -161,24 +172,24 @@ export default function Result() {
                 Main Emotion Observerved: &nbsp;
                 <span
                   className={`text-${
-                    result.llm_emotion_analysis.common_emotion == "Anger"
+                    aiOutput.llm_emotion_analysis.common_emotion == "Anger"
                       ? "red-500"
-                      : result.llm_emotion_analysis.common_emotion == "Joy"
+                      : aiOutput.llm_emotion_analysis.common_emotion == "Joy"
                       ? "green-600"
-                      : result.llm_emotion_analysis.common_emotion == "Sadness"
+                      : aiOutput.llm_emotion_analysis.common_emotion == "Sadness"
                       ? "blue-500"
                       : "gray-600"
                   }`}
                 >
-                  {result.llm_emotion_analysis.common_emotion}
+                  {aiOutput.llm_emotion_analysis.common_emotion}
                 </span>
               </p>
               {/* <p className="text-xl text-left mb-6">
-                <span className="font-bold font-mono">Description:</span> {result.llm_emotion_analysis.emotional_analysis.description}
+                <span className="font-bold font-mono">Description:</span> {aiOutput.llm_emotion_analysis.emotional_analysis.description}
               </p>
               <hr className="py-4 mt-"/>
               <p className="text-xl text-left">
-                <span className="font-bold font-mono">Impact:</span> {result.llm_emotion_analysis.emotional_analysis.impact}
+                <span className="font-bold font-mono">Impact:</span> {aiOutput.llm_emotion_analysis.emotional_analysis.impact}
               </p> */}
 
               <Banner>
@@ -189,7 +200,7 @@ export default function Result() {
                         <span className="">
                           <span className="font-black">Description:</span>
                           {
-                            result.llm_emotion_analysis.emotional_analysis
+                            aiOutput.llm_emotion_analysis.emotional_analysis
                               .description
                           }
                         </span>
@@ -206,7 +217,7 @@ export default function Result() {
                         <span className="">
                           <span className="font-black">Impact:</span>
                           {
-                            result.llm_emotion_analysis.emotional_analysis
+                            aiOutput.llm_emotion_analysis.emotional_analysis
                               .impact
                           }
                         </span>
@@ -221,13 +232,13 @@ export default function Result() {
             <Accordion>
               <Accordion.Panel>
                 <Accordion.Title>Noticable Features</Accordion.Title>
-                {result.llm_speech_analysis.good.map((x, i) => {
+                {aiOutput.llm_speech_analysis.good.map((x, i) => {
                   return <Accordion.Content>{x}</Accordion.Content>;
                 })}
               </Accordion.Panel>
               <Accordion.Panel>
                 <Accordion.Title>Noticable Mistakes</Accordion.Title>
-                {result.llm_speech_analysis.bad.map((x, i) => {
+                {aiOutput.llm_speech_analysis.bad.map((x, i) => {
                   return <Accordion.Content>{x}</Accordion.Content>;
                 })}
               </Accordion.Panel>
@@ -240,21 +251,21 @@ export default function Result() {
                   Facial and Emotional Recommendations
                 </Accordion.Title>
 
-                {result.llm_emotion_analysis.suggestions.map((x, i) => {
+                {aiOutput.llm_emotion_analysis.suggestions.map((x, i) => {
                   return <Accordion.Content>{x}</Accordion.Content>;
                 })}
               </Accordion.Panel>
               <Accordion.Panel>
                 <Accordion.Title>Verbal Improvments</Accordion.Title>
 
-                {result.llm_speech_analysis.improvements.map((x, i) => {
+                {aiOutput.llm_speech_analysis.improvements.map((x, i) => {
                   return <Accordion.Content>{x}</Accordion.Content>;
                 })}
               </Accordion.Panel>
               <Accordion.Panel>
                 <Accordion.Title>Improvement Example Points</Accordion.Title>
 
-                {result.llm_speech_analysis.improvements.map((x, i) => {
+                {aiOutput.llm_speech_analysis.improvements.map((x, i) => {
                   return (
                     <>
                       <Accordion.Content>{x}</Accordion.Content>
@@ -298,7 +309,7 @@ export default function Result() {
                 ></circle>
               </svg>
               <p className="font-black text-3xl">
-                Score: {result.llm_speech_analysis.score}
+                Score: {aiOutput.llm_speech_analysis.score}
               </p>
               <div>
                 <Banner>
@@ -308,7 +319,7 @@ export default function Result() {
                         <span className="[&_p]:inline">
                           <span className="">
                             <span className="font-black">Speed Review:</span>{" "}
-                            {result.llm_speech_analysis.overall_speed}
+                            {aiOutput.llm_speech_analysis.overall_speed}
                           </span>
                         </span>
                       </p>

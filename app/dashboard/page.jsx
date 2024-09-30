@@ -1,24 +1,38 @@
 "use client";
 import React, { useEffect } from "react";
 import { FileInput, Label, Progress } from "flowbite-react";
+import ProcessVideo from "../actions/processVideo";
+import { useRouter } from 'next/router';
 
 export default function Dashboard() {
   const [vid_uploaded, setVidUploaded] = React.useState(false);
+  const [video, setVideo] = React.useState(null);
   const [progress, setProgress] = React.useState(0);
+  const [ai_output , setAIOutput] = React.useState("");
+  const [loading,setLoading] = React.useState(false);
+
+  const router = useRouter();  // Initialize the Next.js router
+
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
   }
   useEffect(() => {
-    if (vid_uploaded && progress != 100) {
-      setProgress(lerp(progress, 101, 0.001));
+    if (loading && progress != 100) {
+      setProgress(lerp(progress, 10, 0.00002));
       if (progress > 100) {
         setProgress(100);
-        setTimeout(() => {
-          window.location.href = "/result";
-        })
+        // setTimeout(() => {
+        //   window.location.href = "/result";
+        // })
       }
+    }else if (!loading && ai_output && ai_output.length > 0) {
+      console.log(ai_output); 
+      router.push({
+        pathname: '/result',
+        query: { aiOutput: JSON.stringify(ai_output) },  
+      });
     }
-  });
+  },[loading,progress,ai_output]);
 
   let html = <>Error -&gt help</>;
   if (!vid_uploaded) {
@@ -68,17 +82,13 @@ export default function Dashboard() {
                     id="dropzone-file"
                     className="hidden"
                     accept=".mp4"
-                    onChange={(ev) => {
-                      console.log(ev.target.files[0]);
+                    onChange={(ev) => { 
                       document.querySelector("video").src = URL.createObjectURL(
                         ev.target.files[0]
                       );
-                      document
-                        .querySelector("#continue")
-                        .classList.remove("hidden");
-                      document
-                        .querySelector("video")
-                        .classList.remove("hidden");
+                      setVideo(ev.target.files[0]);
+                      document.querySelector("#continue").classList.remove("hidden");
+                      document.querySelector("video").classList.remove("hidden");
                       document.querySelector("video").pause();
                     }}
                   />
@@ -123,9 +133,14 @@ export default function Dashboard() {
                 href="#"
                 className="hidden text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 600 gray-700 focus:outline-none gray-800"
                 id="continue"
-                onClick={() => {
+                onClick={ async() => {
                   console.log("loading next page");
                   setVidUploaded(true);
+                  setLoading(true);
+                  let res =  await ProcessVideo(video);
+                  console.log(res)
+                  setAIOutput(res);
+                  setLoading(false); 
                 }}
               >
                 Continue
