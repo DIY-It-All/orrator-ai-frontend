@@ -55,8 +55,7 @@ export default function aiOutput() {
     // failed: "teu"
   } 
   const [aiOutput, setAIOutput] = useState(temp_res); 
- useEffect(()=>{
-  // get the ai output from local storage
+ useEffect(()=>{ 
   let ai_output = localStorage.getItem("ai_output");
   if (ai_output) {
     setAIOutput(JSON.parse(ai_output));

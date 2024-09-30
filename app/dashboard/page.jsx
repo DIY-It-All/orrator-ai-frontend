@@ -19,12 +19,12 @@ export default function Dashboard() {
       console.log("got ai output"); 
       // set the ai output in local storage
       localStorage.setItem("ai_output", JSON.stringify(ai_output));
-      
+
       window.location.href = "/result";
     }
 
     if (loading && progress != 100 && !ai_output && ai_output.length == 0) {
-      setProgress(lerp(progress, 99, 0.0002));
+      setProgress(lerp(progress, 99, 0.00005));
       if (progress > 100) {
         setProgress(100);
         // setTimeout(() => {
