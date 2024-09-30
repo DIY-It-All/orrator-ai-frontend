@@ -139,6 +139,11 @@ export default function Dashboard() {
                   setVidUploaded(true);
                   setLoading(true);
                   let res =  await ProcessVideo(video); 
+                  if(res.error) {
+                    console.warn("error in processing video....");
+                    alert("AI servers are currently offline. Please try again");
+                    return;
+                  }
                   setGotAIOutput(true);
                   setAIOutput(res);
                   setLoading(false); 

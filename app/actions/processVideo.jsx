@@ -18,6 +18,6 @@ export default async function ProcessVideo(video) {
     return res_json;
   } catch (error) {
     console.error("Error:", error);
-    throw error;
+    return { error: error };
   }
 }
