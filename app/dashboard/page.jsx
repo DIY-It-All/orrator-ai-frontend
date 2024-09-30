@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { FileInput, Label, Progress } from "flowbite-react";
 
 export default function Dashboard() {
-  const [vid_uploaded, setVidUploaded] = React.useState(true);
+  const [vid_uploaded, setVidUploaded] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
   useEffect(() => {
     if (vid_uploaded && progress != 100) {

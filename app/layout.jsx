@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="">
       <body
       //defult dark theme
-        className="bg-white text-black h-screen"
+        className="bg-white text-black min-h-screen"
       >
         <NavBar />
         {children}

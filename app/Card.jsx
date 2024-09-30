@@ -12,9 +12,9 @@ export function Card(props) {
               width={20}
               height={20}
               className="" />
-            <h1 className="title-font text-lg font-medium text-gray-400 mb-3">
+            <p className="title-font text-lg font-medium text-gray-400 mb-3">
               {props.title}
-            </h1>
+            </p>
             <p className="leading-relaxed mb-3">{props.txt}</p>
           </div>
         </div>

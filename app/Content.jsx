@@ -148,9 +148,9 @@ export function Content() {
   function GetStarted() {
     return (
       // <div className="grid gap-24 align-center pb-24">
-      //   <h1 className="text-4xl font-bold text-center p-6">
+      //   <p className="text-4xl font-bold text-center p-6">
       //     Master your next presentation
-      //   </h1>
+      //   </p>
       //   <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-left mx-auto">
       //     Get Started
       //   </button>
@@ -160,12 +160,12 @@ export function Content() {
           <div className="input">https://daisyui.com</div>
         </div>
         <div className="flex flex-col p-[8rem] text-center">
-          <h1 className="mb-5 text-5xl font-bold m-4 pb-4">
+          <p className="mb-5 text-5xl font-bold m-4 pb-4">
             Level Up Your Presentation Skills Today With -{" "}
             <a href="#" className="hover:underline">
               Orator-AI
             </a>
-          </h1>
+          </p>
 
           <button className="btn btn-primary ">Get Started Now!</button>
         </div>
@@ -176,7 +176,7 @@ export function Content() {
 function TextWorkingBody() {
   return (
     // <div className="w-[90%] m-auto">
-    //   <h1 className="text-2xl font-black pt-4">How It Works</h1>
+    //   <p className="text-2xl font-black pt-4">How It Works</p>
     //   <p className="">
     //     1. Record your performance using our in-app video recorder
     //     <br></br>
@@ -186,7 +186,7 @@ function TextWorkingBody() {
     //   </p>
     // </div>
     <div className="p-4 mx-auto text-xl mockup-window border-base-300 border">
-      <h1 className="text-5xl font-black pt-4">How It Works</h1>
+      <p className="text-5xl font-black pt-4">How It Works</p>
       <ul className="steps steps-vertical">
         <li className="step step-primary">
           Record your performance using our in-app video recorder
