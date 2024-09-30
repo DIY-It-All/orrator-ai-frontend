@@ -77,10 +77,10 @@ export function Content() {
             </div>
             <Image
               className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
-              src="/image.jpg"
+              src="/img1.jpg"
               alt="dashboard feature image"
-              width={1920}
-              height={1080}
+              width={6778}
+              height={2118}
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ export function Content() {
               Orator-AI is here to help you conquer you next Interveiw.
             </p>
             <a
-              href="#"
+              href="/dashboard"
               className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-xl px-5 py-5 mr-2 my-2 600 purple-700 focus:outline-none purple-800"
             >
               Get Started

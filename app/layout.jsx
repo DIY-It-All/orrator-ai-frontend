@@ -10,6 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="">
+      <link rel="icon" href="/logo.png" sizes="any" />
       <body
       //defult dark theme
         className="bg-white text-black min-h-screen"
