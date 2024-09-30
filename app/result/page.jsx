@@ -160,15 +160,15 @@ export default function Result() {
               <p className="font-black text-3xl">
                 Main Emotion Observerved: &nbsp;
                 <span
-                  className={`text-[${
+                  className={`text-${
                     result.llm_emotion_analysis.common_emotion == "Anger"
-                      ? "rgb(255,0,0)"
+                      ? "red-500"
                       : result.llm_emotion_analysis.common_emotion == "Joy"
-                      ? "rgb(0,255,0)"
+                      ? "green-600"
                       : result.llm_emotion_analysis.common_emotion == "Sadness"
-                      ? "rgb(0,0,255)"
-                      : "rgb(100,100,100)"
-                  }]`}
+                      ? "blue-500"
+                      : "gray-600"
+                  }`}
                 >
                   {result.llm_emotion_analysis.common_emotion}
                 </span>
