@@ -16,7 +16,11 @@ export default function Dashboard() {
   }
   useEffect(() => {   
     if (got_ai_output) {
-
+      console.log("got ai output"); 
+      // set the ai output in local storage
+      localStorage.setItem("ai_output", JSON.stringify(ai_output));
+      
+      window.location.href = "/result";
     }
 
     if (loading && progress != 100 && !ai_output && ai_output.length == 0) {
