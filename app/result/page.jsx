@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Accordion, Banner } from "flowbite-react";
 import { Tabs } from "flowbite-react";
-import Image from "next/image"; 
+import Image from "next/image";
 
 export default function aiOutput() {
   let temp_res = {
@@ -53,14 +53,14 @@ export default function aiOutput() {
       score: 82,
     },
     // failed: "teu"
-  } 
-  const [aiOutput, setAIOutput] = useState(temp_res); 
- useEffect(()=>{ 
-  let ai_output = localStorage.getItem("ai_output");
-  if (ai_output) {
-    setAIOutput(JSON.parse(ai_output));
-  }
- },[])
+  };
+  const [aiOutput, setAIOutput] = useState(temp_res);
+  useEffect(() => {
+    let ai_output = localStorage.getItem("ai_output");
+    if (ai_output) {
+      setAIOutput(JSON.parse(ai_output));
+    }
+  }, []);
   const tabs_theme = {
     base: "flex flex-col gap-2",
     tablist: {
@@ -157,7 +157,7 @@ export default function aiOutput() {
           ref={tabsRef}
           onActiveTabChange={(tab) => {
             setActiveTab(tab);
-            if(tab != 3) {
+            if (tab != 3) {
               setScore(0);
             }
           }}
@@ -172,12 +172,16 @@ export default function aiOutput() {
                       ? "red-500"
                       : aiOutput.llm_emotion_analysis.common_emotion == "Joy"
                       ? "green-600"
-                      : aiOutput.llm_emotion_analysis.common_emotion == "Sadness"
+                      : aiOutput.llm_emotion_analysis.common_emotion ==
+                        "Sadness"
                       ? "blue-500"
                       : "gray-600"
                   }`}
                 >
-                  {aiOutput.llm_emotion_analysis.common_emotion}
+                  {aiOutput.llm_emotion_analysis &&
+                  aiOutput.llm_emotion_analysis.common_emotion
+                    ? aiOutput.llm_emotion_analysis.common_emotion
+                    : "Neutral"}
                 </span>
               </p>
               {/* <p className="text-xl text-left mb-6">
@@ -195,10 +199,13 @@ export default function aiOutput() {
                       <span className="[&_p]:inline">
                         <span className="">
                           <span className="font-black">Description:</span>
-                          {
-                            aiOutput.llm_emotion_analysis.emotional_analysis
-                              .description
-                          }
+                          {aiOutput.llm_emotion_analysis &&
+                          aiOutput.llm_emotion_analysis.emotional_analysis &&
+                          aiOutput.llm_emotion_analysis.emotional_analysis
+                            .description
+                            ? aiOutput.llm_emotion_analysis.emotional_analysis
+                                .description
+                            : "No Description Found"}
                         </span>
                       </span>
                     </p>
@@ -212,10 +219,13 @@ export default function aiOutput() {
                       <span className="[&_p]:inline">
                         <span className="">
                           <span className="font-black">Impact:</span>
-                          {
-                            aiOutput.llm_emotion_analysis.emotional_analysis
-                              .impact
-                          }
+                          {aiOutput.llm_emotion_analysis &&
+                          aiOutput.llm_emotion_analysis.emotional_analysis &&
+                          aiOutput.llm_emotion_analysis.emotional_analysis
+                            .impact
+                            ? aiOutput.llm_emotion_analysis.emotional_analysis
+                                .impact
+                            : "No Impact Found"}
                         </span>
                       </span>
                     </p>
@@ -228,15 +238,25 @@ export default function aiOutput() {
             <Accordion>
               <Accordion.Panel>
                 <Accordion.Title>Noticable Features</Accordion.Title>
-                {aiOutput.llm_speech_analysis.good.map((x, i) => {
-                  return <Accordion.Content>{x}</Accordion.Content>;
-                })}
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.good
+                  ? aiOutput.llm_speech_analysis.good.map((x, i) => {
+                      return (
+                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                      );
+                    })
+                  : "No Features Found"}
               </Accordion.Panel>
               <Accordion.Panel>
                 <Accordion.Title>Noticable Mistakes</Accordion.Title>
-                {aiOutput.llm_speech_analysis.bad.map((x, i) => {
-                  return <Accordion.Content>{x}</Accordion.Content>;
-                })}
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.bad
+                  ? aiOutput.llm_speech_analysis.bad.map((x, i) => {
+                      return (
+                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                      );
+                    })
+                  : "No Mistakes Found"}
               </Accordion.Panel>
             </Accordion>
           </Tabs.Item>
@@ -247,27 +267,40 @@ export default function aiOutput() {
                   Facial and Emotional Recommendations
                 </Accordion.Title>
 
-                {aiOutput.llm_emotion_analysis.suggestions.map((x, i) => {
-                  return <Accordion.Content>{x}</Accordion.Content>;
-                })}
+                {aiOutput.llm_emotion_analysis &&
+                aiOutput.llm_emotion_analysis.suggestions
+                  ? aiOutput.llm_emotion_analysis.suggestions.map((x, i) => {
+                      return (
+                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                      );
+                    })
+                  : "No Suggestions Found"}
               </Accordion.Panel>
               <Accordion.Panel>
                 <Accordion.Title>Verbal Improvments</Accordion.Title>
 
-                {aiOutput.llm_speech_analysis.improvements.map((x, i) => {
-                  return <Accordion.Content>{x}</Accordion.Content>;
-                })}
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.improvements
+                  ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
+                      return (
+                        <Accordion.Content>{x.toString}</Accordion.Content>
+                      );
+                    })
+                  : "No Improvements Found"}
               </Accordion.Panel>
               <Accordion.Panel>
                 <Accordion.Title>Improvement Example Points</Accordion.Title>
 
-                {aiOutput.llm_speech_analysis.improvements.map((x, i) => {
-                  return (
-                    <>
-                      <Accordion.Content>{x}</Accordion.Content>
-                    </>
-                  );
-                })}
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.improvements
+                  ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
+                      return (
+                        <>
+                          <Accordion.Content>{x.toString()}</Accordion.Content>
+                        </>
+                      );
+                    })
+                  : "No Improvements Found"}
               </Accordion.Panel>
             </Accordion>
           </Tabs.Item>
@@ -293,15 +326,11 @@ export default function aiOutput() {
                   cx="80"
                   cy="80"
                   fill="transparent"
-                  stroke={`hsl(${
-                    (score / 100.0) * 120.0
-                  }deg,100%,50%)`}
+                  stroke={`hsl(${(score / 100.0) * 120.0}deg,100%,50%)`}
                   strokeWidth="12px"
                   strokeDasharray="439.6px"
                   strokeLinecap="round"
-                  strokeDashoffset={`${
-                    439.6 * ((100 - score) / 100)
-                  }px`}
+                  strokeDashoffset={`${439.6 * ((100 - score) / 100)}px`}
                 ></circle>
               </svg>
               <p className="font-black text-3xl">
