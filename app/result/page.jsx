@@ -48,7 +48,7 @@ export default function aiOutput() {
         "Instead of 'generate comprehensive reports', consider 'provide actionable insights that help users tackle their communication challenges head-on'",
         "Instead of 'creating a structured path for better communication', consider 'guiding users on a journey of self-improvement and growth'",
       ],
-      overall_speed:
+      overall_speech:
         "The overall speed was moderate, with some moments where the presenter seemed to slow down to gather thoughts. It would be beneficial to practice the pitch to deliver it at a slightly faster pace while maintaining clarity.",
       score: 82,
     },
@@ -314,8 +314,8 @@ export default function aiOutput() {
                       <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
                         <span className="[&_p]:inline">
                           <span className="">
-                            <span className="font-black">Speed Review:</span>{" "}
-                            {aiOutput.llm_speech_analysis.overall_speed}
+                            <span className="font-black">Speech Review:</span>{" "}
+                            {aiOutput.llm_speech_analysis.overall_speech}
                           </span>
                         </span>
                       </p>
