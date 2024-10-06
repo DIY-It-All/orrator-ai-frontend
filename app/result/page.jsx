@@ -153,6 +153,7 @@ export default function aiOutput() {
     },
     speech_speed:
       "The speech speed is approximately 148 words per minute, which is slightly above the average rate. While it's not too fast, it could be slightly more conversational and relaxed, aiming for an ideal range of 125-135 words per minute.",
+    failed: true,
   };
   const [aiOutput, setAIOutput] = useState(temp_res);
   useEffect(() => {
@@ -247,8 +248,8 @@ export default function aiOutput() {
   if (aiOutput.failed) {
     return (
       <>
-        <p className="text-center font-black text-5xl w-[80vw] m-auto">
-          Could not fetch the tests aiOutputs right now.
+        <p className="text-center font-black text-5xl w-[80vw] m-auto my-6 py-6">
+          Could not fetch the latest AI results right now.
           <br />
           Please try again later
         </p>
