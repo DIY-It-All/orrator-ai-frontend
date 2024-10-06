@@ -12,13 +12,16 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import { useEffect, useState } from "react";
 
 export const ConnectWalletButton = () => {
   const { sdk, connected, connecting, account } = useSDK();
-
+  const [currentAccount, setCurrentAccount] = useState(account);
   const connect = async () => {
     try {
       await sdk?.connect();
+      setCurrentAccount(account);
+      console.log(account);
     } catch (err) {
       console.warn(`No accounts found`, err);
     }
@@ -29,6 +32,7 @@ export const ConnectWalletButton = () => {
       if (sdk) {
         sdk.terminate().then((r)=>{
           console.log(r)
+          setCurrentAccount(undefined)
         }).catch((e)=>{
           console.log(e)
         });
@@ -38,12 +42,29 @@ export const ConnectWalletButton = () => {
       console.warn(e)
     }
   };  
+  function checkConnection() {
+    ethereum.request({ method: 'eth_accounts' }).then(handleAccountsChanged).catch(console.error);
+  }
+  
+  function handleAccountsChanged(accounts) {
+    console.log(accounts);
+    if (accounts.length === 0) {
+      document.querySelector('#connection-status').innerText = "You're not connected to MetaMask";
+      document.querySelector('#connect-btn').disabled = false;
+    } else if (accounts[0]) {
+      setCurrentAccount(accounts[0]);
+      document.querySelector('#connection-status').innerText = `Address: ${accounts[0]}`;
+      document.querySelector('#connect-btn').disabled = true;
+    }
+  }
+  useEffect(()=> checkConnection,[]);
   return (
     <div className="relative">
-      {(connected & account!== undefined )? (
+      {(currentAccount!== undefined )? (
         <Popover>
           <PopoverTrigger>
-            <Button>{formatAddress(account)}</Button>
+            <Button id="connect-btn">{formatAddress(currentAccount)}</Button>
+            <p id="connection-status"></p>
           </PopoverTrigger>
           <PopoverContent className="mt-2 w-44 bg-gray-100 border rounded-md shadow-lg right-0 z-10 top-10">
             <button

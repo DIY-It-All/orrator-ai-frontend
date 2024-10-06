@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 
 export default function PaymentsAPI() {
@@ -27,6 +27,8 @@ export default function PaymentsAPI() {
     }
   };
 
+
+
   // Function to check balance
   const checkBalance = async (provider, address) => {
     if (provider) {
@@ -40,31 +42,36 @@ export default function PaymentsAPI() {
     }
   };
 
-  // Function to deduct amount
   const buyPremium = async () => {
     if (!account) {
       setError('Please connect your wallet first!');
+      alert("plz connect account");
       return;
     }
+
 
     const amountToDeduct = ethers.parseEther('0.00001'); // Amount in Ether
 
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
+      console.log("got provider");
       const signer = await provider.getSigner();
-
-   
+      console.log("got signer");
+      
+      
       const recipientAddress = '0xF4a4CfC05AC2D927E2c89B8201D80e1515972Ca4'; 
-
+      
       
       const tx = {
         to: recipientAddress,
         value: amountToDeduct,
       };
-
+      
       const transactionResponse = await signer.sendTransaction(tx);
+      console.log("sent transaction");
       console.log('Transaction Response:', transactionResponse);
       await transactionResponse.wait(); 
+      console.log("transaction complete");
       alert('Payment successful!');
       await checkBalance(provider, account); // Update balance after transaction
     } catch (err) {
@@ -72,7 +79,7 @@ export default function PaymentsAPI() {
       setError(err.message);
     }
   };
-
+useEffect(()=>{connectWallet()}, []);
   return (
     <div style={{ padding: '20px' }}>
       <h1>Wallet Connection Example</h1>
