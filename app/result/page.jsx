@@ -393,7 +393,7 @@ export default function aiOutput() {
             <hr className="py-4 mt-8 mb-4 " />
           </Tabs.Item>
           <Tabs.Item title="Emotion Review  ">
-            <div className="w-[90%] m-auto flex flex-col items-center text-justify px-8">
+            <div className="w-[87%] m-auto flex flex-col items-center text-justify px-8">
               {/* <p className="text-xl text-left mb-6">
                 <span className="font-bold font-mono">Description:</span> {aiOutput.llm_emotion_analysis.emotional_analysis.description}
               </p>
