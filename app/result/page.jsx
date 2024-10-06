@@ -58,16 +58,21 @@ export default function aiOutput() {
   useEffect(() => {
     let ai_output = localStorage.getItem("ai_output");
     if (ai_output) {
-      try{
-      let temp_ai_output = JSON.parse(ai_output);
-      temp_ai_output.llm_emotion_analysis = JSON.parse(temp_ai_output.llm_emotion_analysis);
-      temp_ai_output.llm_speech_analysis = JSON.parse(temp_ai_output.llm_speech_analysis);
-      setAIOutput(temp_ai_output);
-      } catch(e){
+      try {
+        let temp_ai_output = JSON.parse(ai_output);
+        temp_ai_output.llm_emotion_analysis = JSON.parse(
+          temp_ai_output.llm_emotion_analysis
+        );
+        temp_ai_output.llm_speech_analysis = JSON.parse(
+          temp_ai_output.llm_speech_analysis
+        );
+        setAIOutput(temp_ai_output);
+      } catch (e) {
         console.log(e);
-        window.alert("Some error occured while fetching the data, kindly retry again");
+        window.alert(
+          "Some error occured while fetching the data, kindly retry again"
+        );
         localStorage.removeItem("ai_output");
-        
       }
     }
   }, []);
@@ -139,11 +144,7 @@ export default function aiOutput() {
 
   useEffect(() =>
     setScore(
-      lerp(
-        score,
-        aiOutput.llm_speech_analysis.score,
-        0.01 * (activeTab == 3 ? 1 : 0)
-      )
+      lerp(score, aiOutput.llm_speech_analysis.score, 0.01 * (activeTab == 0))
     )
   );
   if (aiOutput.failed) {
@@ -172,7 +173,102 @@ export default function aiOutput() {
             }
           }}
         >
-          <Tabs.Item title="Emotion Review  " active>
+          <Tabs.Item title="Analysis Results  ">
+            <div className="w-[100%] flex flex-col items-center">
+              <svg
+                width="160"
+                height="160"
+                viewBox="0 0 160 160"
+                className="-rotate-90"
+              >
+                <circle
+                  r="70"
+                  cx="80"
+                  cy="80"
+                  fill="transparent"
+                  stroke="#e0e0e0"
+                  strokeWidth="12px"
+                ></circle>
+                <circle
+                  r="70"
+                  cx="80"
+                  cy="80"
+                  fill="transparent"
+                  stroke={`hsl(${(score / 100.0) * 120.0}deg,100%,50%)`}
+                  strokeWidth="12px"
+                  strokeDasharray="439.6px"
+                  strokeLinecap="round"
+                  strokeDashoffset={`${439.6 * ((100 - score) / 100)}px`}
+                ></circle>
+                {/* <text x="0" y="0" fill="red" transform="rotate(90,0,0) translate(10,0,0)">
+                  {aiOutput.llm_speech_analysis.score}
+                </text> */}
+              </svg>
+              <p className="font-black text-3xl">
+                Score: {aiOutput.llm_speech_analysis.score}
+              </p>
+              <div>
+                <Banner>
+                  <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+                    <div className="mx-auto flex items-center">
+                      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <span className="[&_p]:inline">
+                          <span className="">
+                            <span className="font-black">Speech Review:</span>{" "}
+                            {aiOutput.llm_speech_analysis.overall_speech}
+                          </span>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </Banner>
+              </div>
+            </div>
+            <h1>Suggestions: </h1>
+            <Accordion collapseAll>
+              <Accordion.Panel>
+                <Accordion.Title>
+                  Facial and Emotional Recommendations
+                </Accordion.Title>
+
+                {aiOutput.llm_emotion_analysis &&
+                aiOutput.llm_emotion_analysis.suggestions
+                  ? aiOutput.llm_emotion_analysis.suggestions.map((x, i) => {
+                      return (
+                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                      );
+                    })
+                  : "No Suggestions Found"}
+              </Accordion.Panel>
+              <Accordion.Panel>
+                <Accordion.Title>Verbal Improvements</Accordion.Title>
+
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.improvements
+                  ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
+                      return (
+                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                      );
+                    })
+                  : "No Improvements Found"}
+              </Accordion.Panel>
+              <Accordion.Panel>
+                <Accordion.Title>Improvement Example Points</Accordion.Title>
+
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.improvements
+                  ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
+                      return (
+                        <>
+                          <Accordion.Content>{x.toString()}</Accordion.Content>
+                        </>
+                      );
+                    })
+                  : "No Improvements Found"}
+              </Accordion.Panel>
+            </Accordion>
+          </Tabs.Item>
+          <Tabs.Item title="Emotion Review  ">
             <div className="w-[90%] m-auto flex flex-col items-center text-center px-8">
               <p className="font-black text-3xl">
                 Main Emotion Observerved: &nbsp;
@@ -270,99 +366,37 @@ export default function aiOutput() {
               </Accordion.Panel>
             </Accordion>
           </Tabs.Item>
-          <Tabs.Item title="Suggesstions  ">
-            <Accordion collapseAll>
-              <Accordion.Panel>
-                <Accordion.Title>
-                  Facial and Emotional Recommendations
-                </Accordion.Title>
 
-                {aiOutput.llm_emotion_analysis &&
-                aiOutput.llm_emotion_analysis.suggestions
-                  ? aiOutput.llm_emotion_analysis.suggestions.map((x, i) => {
+          <Tabs.Item title="Speaking Speed Score  " active>
+
+            <p className="font-black text-3xl">
+              Score: {aiOutput.llm_speech_analysis.score}
+            </p>
+
+            <Accordion>
+              <Accordion.Panel>
+                <Accordion.Title>Noticable Features</Accordion.Title>
+                {aiOutput.llm_speech_analysis &&
+                aiOutput.llm_speech_analysis.good
+                  ? aiOutput.llm_speech_analysis.good.map((x, i) => {
                       return (
                         <Accordion.Content>{x.toString()}</Accordion.Content>
                       );
                     })
-                  : "No Suggestions Found"}
+                  : "No Features Found"}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title>Verbal Improvements</Accordion.Title>
-
+                <Accordion.Title>Noticable Mistakes</Accordion.Title>
                 {aiOutput.llm_speech_analysis &&
-                aiOutput.llm_speech_analysis.improvements
-                  ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
+                aiOutput.llm_speech_analysis.bad
+                  ? aiOutput.llm_speech_analysis.bad.map((x, i) => {
                       return (
                         <Accordion.Content>{x.toString()}</Accordion.Content>
                       );
                     })
-                  : "No Improvements Found"}
-              </Accordion.Panel>
-              <Accordion.Panel>
-                <Accordion.Title>Improvement Example Points</Accordion.Title>
-
-                {aiOutput.llm_speech_analysis &&
-                aiOutput.llm_speech_analysis.improvements
-                  ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
-                      return (
-                        <>
-                          <Accordion.Content>{x.toString()}</Accordion.Content>
-                        </>
-                      );
-                    })
-                  : "No Improvements Found"}
+                  : "No Mistakes Found"}
               </Accordion.Panel>
             </Accordion>
-          </Tabs.Item>
-
-          <Tabs.Item title="Overall  ">
-            <div className="w-[100%] flex flex-col items-center">
-              <svg
-                width="160"
-                height="160"
-                viewBox="0 0 160 160"
-                className="-rotate-90"
-              >
-                <circle
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  fill="transparent"
-                  stroke="#e0e0e0"
-                  strokeWidth="12px"
-                ></circle>
-                <circle
-                  r="70"
-                  cx="80"
-                  cy="80"
-                  fill="transparent"
-                  stroke={`hsl(${(score / 100.0) * 120.0}deg,100%,50%)`}
-                  strokeWidth="12px"
-                  strokeDasharray="439.6px"
-                  strokeLinecap="round"
-                  strokeDashoffset={`${439.6 * ((100 - score) / 100)}px`}
-                ></circle>
-              </svg>
-              <p className="font-black text-3xl">
-                Score: {aiOutput.llm_speech_analysis.score}
-              </p>
-              <div>
-                <Banner>
-                  <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
-                    <div className="mx-auto flex items-center">
-                      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
-                        <span className="[&_p]:inline">
-                          <span className="">
-                            <span className="font-black">Speech Review:</span>{" "}
-                            {aiOutput.llm_speech_analysis.overall_speech}
-                          </span>
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </Banner>
-              </div>
-            </div>
           </Tabs.Item>
         </Tabs>
       </>
