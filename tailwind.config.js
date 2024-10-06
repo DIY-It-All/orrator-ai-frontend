@@ -9,32 +9,18 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     flowbite.content(),
   ],
-  theme: {
-    daisyui: {
-      themes: [
-        {
-          mytheme: {
-            primary: "#374151",
-
-            secondary: "#6366f1",
-
-            accent: "#2563eb",
-
-            neutral: "#2563eb",
-
-            "base-100": "#1f2937",
-
-            info: "#38bdf8",
-
-            success: "#00ff00",
-
-            warning: "#fbbf24",
-
-            error: "#ff0000",
-          },
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#6c2bd9",
+          secondary: "#111111",
         },
-      ],
-    },
+      },
+    ],
+  },
+  theme: {
 
     extend: {
       colors: {
@@ -95,7 +81,7 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    require("daisyui"),
     flowbite.plugin(),
+    require("daisyui"),
   ],
 };
