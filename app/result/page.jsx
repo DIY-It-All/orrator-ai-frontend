@@ -315,7 +315,18 @@ export default function aiOutput() {
                         </span>
                       </p>
                     </div>
-                  </div>
+                    <hr />
+                    <div className="mx-auto flex items-center">
+                      <p className="flex items-center text-md font-normal text-gray-700 dark:text-gray-600">
+                        <span className="[&_p]:inline">
+                          <span className="">
+                            <span className="font-black">Speech Speed Review:</span>{" "}
+                            {aiOutput.llm_speech_analysis.speech_speed}
+                          </span>
+                        </span>
+                      </p>
+                    </div>
+                  </div> 
                 </Banner>
               </div>
             </div>
