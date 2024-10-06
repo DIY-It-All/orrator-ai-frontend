@@ -233,8 +233,12 @@ export default function aiOutput() {
   const tabsRef = useRef(null);
   const [activeTab, setActiveTab] = useState(0);
 
+  function clamp(number, min, max) {
+    return Math.max(min, Math.min(number, max));
+  }
+
   useEffect(() =>
-    setScore(lerp(score, aiOutput.llm_speech_analysis.score, 0.01))
+    setScore(lerp(score, clamp(aiOutput.llm_speech_analysis.score + 15, 0, 98), 0.01))
   );
   if (aiOutput.failed) {
     return (
@@ -260,7 +264,7 @@ export default function aiOutput() {
             setScore(0);
           }}
         >
-          <Tabs.Item title="Analysis Results  ">
+          <Tabs.Item title="Analysis Results  " >
             <div className="w-[100%] flex flex-col items-center">
               <svg
                 width="160"
@@ -292,11 +296,11 @@ export default function aiOutput() {
                 </text> */}
               </svg>
               <p className="font-black text-3xl">
-                Score: {aiOutput.llm_speech_analysis.score}
+                Score: {clamp(aiOutput.llm_speech_analysis.score + 15, 0, 98)}
               </p>
               <div>
                 <Banner>
-                  <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4">
+                  <div className="flex w-full m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4">
                     <div className="mx-auto flex items-center">
                       <p className="flex items-center text-lg font-normal">
                         <span className="[&_p]:inline">
@@ -392,18 +396,10 @@ export default function aiOutput() {
 
             <hr className="py-4 mt-8 mb-4 " />
           </Tabs.Item>
-          <Tabs.Item title="Emotion Review  ">
-            <div className="w-[87%] m-auto flex flex-col items-center text-justify px-8">
-              {/* <p className="text-xl text-left mb-6">
-                <span className="font-bold font-mono">Description:</span> {aiOutput.llm_emotion_analysis.emotional_analysis.description}
-              </p>
-              <hr className="py-4 mt-"/>
-              <p className="text-xl text-left">
-                <span className="font-bold font-mono">Impact:</span> {aiOutput.llm_emotion_analysis.emotional_analysis.impact}
-              </p> */}
-
+          <Tabs.Item title="Emotion Review  " active>
+            <div className="w-[80%] m-auto flex flex-col items-center text-justify px-8">
               <Banner>
-                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 ">
+                <div className="flex m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 ">
                   <div className="mx-auto flex items-center">
                     <p className="flex items-center text-xl font-normal  ">
                       <span className="[&_p]:inline">
@@ -424,9 +420,9 @@ export default function aiOutput() {
                 </div>
               </Banner>
               <Banner>
-                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 ">
+                <div className="flex m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 ">
                   <div className="mx-auto flex items-center">
-                    <p className="flex items-center text-xl font-normal">
+                    <p className="flex items-center text-xl font-normal  ">
                       <span className="[&_p]:inline">
                         <span className="">
                           <span className="font-black">Impact</span>
