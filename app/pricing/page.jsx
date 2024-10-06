@@ -16,7 +16,7 @@ function Pricing() {
           <div className="space-y-8 lg:grid lg:grid-cols-2 sm:gap-6 xl:gap-10 lg:space-y-0">
 
 
-          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow ">
+          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-purple-700 shadow ">
               <h3 className="mb-4 text-2xl font-semibold">Monthly</h3>
               <p className="font-light text-gray-500 sm:text-lg ">
                 Best for new customers and students.
@@ -105,7 +105,7 @@ function Pricing() {
                 Get started
               </a>
             </div>
-          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-purple-700 shadow ">
+          <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow ">
               <h3 className="mb-4 text-2xl font-semibold">Yearly</h3>
               <p className="font-light text-gray-500 sm:text-lg ">
                 Best for large scale uses and frequent customers.
