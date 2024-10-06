@@ -143,9 +143,7 @@ export default function aiOutput() {
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() =>
-    setScore(
-      lerp(score, aiOutput.llm_speech_analysis.score, 0.01 * (activeTab == 0))
-    )
+    setScore(lerp(score, aiOutput.llm_speech_analysis.score, 0.01))
   );
   if (aiOutput.failed) {
     return (
@@ -168,9 +166,7 @@ export default function aiOutput() {
           ref={tabsRef}
           onActiveTabChange={(tab) => {
             setActiveTab(tab);
-            if (tab != 3) {
-              setScore(0);
-            }
+            setScore(0);
           }}
         >
           <Tabs.Item title="Analysis Results  ">
@@ -224,7 +220,9 @@ export default function aiOutput() {
                 </Banner>
               </div>
             </div>
-            <h1>Suggestions: </h1>
+            <h1 className="font-bold text-3xl text-center">
+              Personalised Suggestions to Improve Speech{" "}
+            </h1>
             <Accordion collapseAll>
               <Accordion.Panel>
                 <Accordion.Title>
@@ -267,6 +265,14 @@ export default function aiOutput() {
                   : "No Improvements Found"}
               </Accordion.Panel>
             </Accordion>
+
+            <hr className="py-4 mt-8 mb-4 " />
+            <div className="m-auto w-[80%] h-8 bg-slate-300 overflow-hidden">
+              <div className="h-full bg-purple-500 -translate-x-20 -skew-x-[22.5deg] w-[40%]"></div>
+            </div>
+            <p className="font-black text-3xl text-center">
+              Average Words Per Minute: {aiOutput.llm_speech_analysis.score}
+            </p>
           </Tabs.Item>
           <Tabs.Item title="Emotion Review  ">
             <div className="w-[90%] m-auto flex flex-col items-center text-center px-8">
@@ -341,38 +347,6 @@ export default function aiOutput() {
             </div>
           </Tabs.Item>
           <Tabs.Item title="Speech Review  ">
-            <Accordion>
-              <Accordion.Panel>
-                <Accordion.Title>Noticable Features</Accordion.Title>
-                {aiOutput.llm_speech_analysis &&
-                aiOutput.llm_speech_analysis.good
-                  ? aiOutput.llm_speech_analysis.good.map((x, i) => {
-                      return (
-                        <Accordion.Content>{x.toString()}</Accordion.Content>
-                      );
-                    })
-                  : "No Features Found"}
-              </Accordion.Panel>
-              <Accordion.Panel>
-                <Accordion.Title>Noticable Mistakes</Accordion.Title>
-                {aiOutput.llm_speech_analysis &&
-                aiOutput.llm_speech_analysis.bad
-                  ? aiOutput.llm_speech_analysis.bad.map((x, i) => {
-                      return (
-                        <Accordion.Content>{x.toString()}</Accordion.Content>
-                      );
-                    })
-                  : "No Mistakes Found"}
-              </Accordion.Panel>
-            </Accordion>
-          </Tabs.Item>
-
-          <Tabs.Item title="Speaking Speed Score  " active>
-
-            <p className="font-black text-3xl">
-              Score: {aiOutput.llm_speech_analysis.score}
-            </p>
-
             <Accordion>
               <Accordion.Panel>
                 <Accordion.Title>Noticable Features</Accordion.Title>
