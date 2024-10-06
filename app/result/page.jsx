@@ -315,17 +315,7 @@ export default function aiOutput() {
                         </span>
                       </p>
                     </div>
-                    <hr />
-                    <div className="mx-auto flex items-center">
-                      <p className="flex items-center text-md font-normal text-gray-700 dark:text-gray-600">
-                        <span className="[&_p]:inline">
-                          <span className="">
-                            <span className="font-black">Speech Speed Review:</span>{" "}
-                            {aiOutput.llm_speech_analysis.speech_speed}
-                          </span>
-                        </span>
-                      </p>
-                    </div>
+                    <hr /> 
                   </div> 
                 </Banner>
               </div>
@@ -411,27 +401,7 @@ export default function aiOutput() {
             </div>
           </Tabs.Item>
           <Tabs.Item title="Emotion Review  ">
-            <div className="w-[90%] m-auto flex flex-col items-center text-center px-8">
-              <p className="font-black text-3xl">
-                Main Emotion Observerved: &nbsp;
-                <span
-                  className={`text-${
-                    aiOutput.llm_emotion_analysis.common_emotion == "Anger"
-                      ? "red-500"
-                      : aiOutput.llm_emotion_analysis.common_emotion == "Joy"
-                      ? "green-600"
-                      : aiOutput.llm_emotion_analysis.common_emotion ==
-                        "Sadness"
-                      ? "blue-500"
-                      : "gray-600"
-                  }`}
-                >
-                  {aiOutput.llm_emotion_analysis &&
-                  aiOutput.llm_emotion_analysis.common_emotion
-                    ? aiOutput.llm_emotion_analysis.common_emotion
-                    : "Neutral"}
-                </span>
-              </p>
+            <div className="w-[90%] m-auto flex flex-col items-center text-justify px-8">
               {/* <p className="text-xl text-left mb-6">
                 <span className="font-bold font-mono">Description:</span> {aiOutput.llm_emotion_analysis.emotional_analysis.description}
               </p>
@@ -441,12 +411,12 @@ export default function aiOutput() {
               </p> */}
 
               <Banner>
-                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 ">
                   <div className="mx-auto flex items-center">
-                    <p className="flex items-center text-xl font-normal text-gray-500 ">
+                    <p className="flex items-center text-xl font-normal  ">
                       <span className="[&_p]:inline">
                         <span className="">
-                          <span className="font-black">Description:</span>
+                          <span className="font-black">Description</span><br></br>
                           {aiOutput.llm_emotion_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis
@@ -461,12 +431,12 @@ export default function aiOutput() {
                 </div>
               </Banner>
               <Banner>
-                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 ">
                   <div className="mx-auto flex items-center">
-                    <p className="flex items-center text-xl font-normal text-gray-500 ">
+                    <p className="flex items-center text-xl font-normal">
                       <span className="[&_p]:inline">
                         <span className="">
-                          <span className="font-black">Impact:</span>
+                          <span className="font-black">Impact</span><br></br>
                           {aiOutput.llm_emotion_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis
@@ -485,23 +455,23 @@ export default function aiOutput() {
           <Tabs.Item title="Speech Review  ">
             <Accordion>
               <Accordion.Panel>
-                <Accordion.Title>Noticable Features</Accordion.Title>
+                <Accordion.Title className="font-black">Noticable Features</Accordion.Title>
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.good
                   ? aiOutput.llm_speech_analysis.good.map((x, i) => {
                       return (
-                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                        <Accordion.Content><span className="font-bold">{i + 1}.&nbsp;</span>{" "}{x.toString()}</Accordion.Content>
                       );
                     })
                   : "No Features Found"}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title>Noticable Mistakes</Accordion.Title>
+                <Accordion.Title className="font-black">Noticable Mistakes</Accordion.Title>
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.bad
                   ? aiOutput.llm_speech_analysis.bad.map((x, i) => {
                       return (
-                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                        <Accordion.Content><span className="font-bold">{i + 1}.&nbsp;</span>{" "}{x.toString()}</Accordion.Content>
                       );
                     })
                   : "No Mistakes Found"}

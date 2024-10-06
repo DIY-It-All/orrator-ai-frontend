@@ -40,8 +40,7 @@
       "Explain technical terms in simple language to ensure everyone in the audience understands.",
       "Use more storytelling techniques to make the speech feel more relatable and engaging."
     ],
-    "speech_speed": "The speech speed is approximately 148 words per minute, which is slightly above the average rate. While it's not too fast, it could be slightly more conversational and relaxed, aiming for an ideal range of 125-135 words per minute.",
-    "examples_of_improvements": [
+     "examples_of_improvements": [
       "Instead of saying 'The problem is communication is crucial for success in personal as well as professional spaces', you could say 'We've all experienced situations where our words fell flat or didn't convey the message we intended. This is because effective communication is crucial in both personal and professional settings'. This would make the language more relatable and conversational.",
       "To explain Wave2vec, you could say 'Our AI model uses a state-of-the-art technology called Wave2vec, which allows us to analyze speech patterns and provide actionable feedback'. This would give a brief, clear explanation of the technical term."
     ],
