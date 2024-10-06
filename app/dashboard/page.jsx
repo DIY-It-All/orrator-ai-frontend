@@ -1,6 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
-import { FileInput, Label, Progress, Modal, Button } from "flowbite-react";
+import {
+  FileInput,
+  Label,
+  Progress,
+  Modal,
+  Button,
+  FloatingLabel,
+} from "flowbite-react";
 import ProcessVideo from "../actions/processVideo";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
@@ -36,7 +43,10 @@ export default function Dashboard() {
   }, [loading, progress, ai_output]);
 
   useEffect(() => {
-    if (window.localStorage.getItem("subscribed") == "false" || !window.localStorage.getItem("subscribed")) {
+    if (
+      window.localStorage.getItem("subscribed") == "false" ||
+      !window.localStorage.getItem("subscribed")
+    ) {
       setOpenModal(true);
     }
   }, []);
@@ -45,36 +55,37 @@ export default function Dashboard() {
   if (!vid_uploaded) {
     html = (
       <>
-                <Modal
-            show={openModal}
-            size="md"
-            onClose={() => setOpenModal(true)}
-            popup
-          >
-            <Modal.Header />
-            <Modal.Body>
-              <div className="text-center">
-                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                  You do not have a vaild subscription. Please subscribe to use Orator-AI
-                </h3>
-                <div className="flex justify-center gap-4">
-                  <Button
-                    color="failure"
-                    onClick={() => (window.location.href = "/pricing")}
-                  >
-                    {"Subscribe Now"}
-                  </Button>
-                  <Button
-                    color="gray"
-                    onClick={() => (window.location.href = "/")}
-                  >
-                    Go to Home
-                  </Button>
-                </div>
+        <Modal
+          show={openModal}
+          size="md"
+          onClose={() => setOpenModal(true)}
+          popup
+        >
+          <Modal.Header />
+          <Modal.Body>
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                You do not have a vaild subscription. Please subscribe to use
+                Orator-AI
+              </h3>
+              <div className="flex justify-center gap-4">
+                <Button
+                  color="failure"
+                  onClick={() => (window.location.href = "/pricing")}
+                >
+                  {"Subscribe Now"}
+                </Button>
+                <Button
+                  color="gray"
+                  onClick={() => (window.location.href = "/")}
+                >
+                  Go to Home
+                </Button>
               </div>
-            </Modal.Body>
-          </Modal>
+            </div>
+          </Modal.Body>
+        </Modal>
 
         <div className="">
           <section className="bg-gray-50 800">
@@ -87,7 +98,29 @@ export default function Dashboard() {
                   Upload your video(prefferably .mp4) and watch the AI do it's
                   magic
                 </p>
-
+                <div className="flex w-full">
+                  <input
+                    type="text"
+                    id="speech_prompt"
+                    placeholder="Simple desciption of your speech's topic"
+                    className="input input-ghost input-primary  rounded-r-none grow"
+                  />
+                  <button className="btn btn-primary glass  rounded-l-none btn-outline border-l-0        stroke-slate-700 hover:stroke-slate-300 fill-blue-100 hover:fill-blue-400">
+                    <svg
+                      className="w-full h-full p-2 stroke-slate-700 hover:stroke-slate-300 fill-blue-100 hover:fill-blque-400"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 19.9 19.7"
+                      transform="scale(-1, 1)"
+                      strokeWidth="2"
+                    >
+                      <g className="search-path">
+                        <path strokeLinecap="square" d="M18.5 18.3l-5.4-5.4" />
+                        <circle cx="8" cy="8" r="7" />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
                 <div className="flex w-full items-center justify-center">
                   <Label
                     htmlFor="dropzone-file"
@@ -179,7 +212,10 @@ export default function Dashboard() {
                     console.log("loading next page");
                     setVidUploaded(true);
                     setLoading(true);
-                    let res = await ProcessVideo(video);
+                    let res = await ProcessVideo(
+                      document.querySelector("#speech_prompt").value,
+                      video
+                    );
                     if (res.error) {
                       console.warn("error in processing video....");
                       setOpenModal(true);

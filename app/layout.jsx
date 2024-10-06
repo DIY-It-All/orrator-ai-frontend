@@ -9,7 +9,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="">
+    <html lang="en" className="" data-theme="light">
+      <link rel="shortcut icon" href="/logo.png"/>
       <link rel="icon" href="/logo.png" sizes="any" />
       <body
       //defult dark theme

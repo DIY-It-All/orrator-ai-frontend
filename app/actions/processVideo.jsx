@@ -1,9 +1,10 @@
 import React from "react";
 
-export default async function ProcessVideo(video) {
+export default async function ProcessVideo(prompt, video) {
   try {
     const formData = new FormData();
     formData.append("file", video, "file.mp4"); // Append the video file with the name 'file.mp4'
+    formData.append("speech_prompt", prompt);
 
     // Send the video to the server via fetch
     let response = await fetch(
