@@ -22,7 +22,7 @@ function Pricing() {
                 Best for new customers and students.
               </p>
               <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-5xl font-extrabold">59 Eth.</span>
+                <span className="mr-2 text-5xl font-extrabold">0.005 Eth.</span>
                 <span className="text-gray-500 ">/month</span>
               </div>
 
@@ -111,7 +111,7 @@ function Pricing() {
                 Best for large scale uses and frequent customers.
               </p>
               <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-5xl font-extrabold">499 Eth.</span>
+                <span className="mr-2 text-5xl font-extrabold">0.05 Eth.</span>
                 <span className="text-gray-500 ">/year</span>
               </div>
 
