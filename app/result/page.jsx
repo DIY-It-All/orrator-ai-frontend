@@ -315,12 +315,31 @@ export default function aiOutput() {
                         </span>
                       </p>
                     </div>
-                    <hr /> 
-                  </div> 
+                    <hr />
+                  </div>
                 </Banner>
               </div>
             </div>
-            <h1 className="font-bold text-3xl text-center m-4">
+            <div className="py-8 my-4">
+              <p className="font-black text-3xl text-center">
+                Average Words Per Minute: {aiOutput.average_word_per_minute}
+              </p>
+              <Banner>
+                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4">
+                  <div className="mx-auto flex items-center">
+                    <p className="flex items-center text-lg font-normal">
+                      <span className="[&_p]:inline">
+                        <span className="">
+                          <span className="font-black">Speed Review:</span>{" "}
+                          {aiOutput.speech_speed}
+                        </span>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </Banner>
+            </div>
+            <h1 className="font-bold text-3xl text-center m-4 my-8">
               Personalised Suggestions to Improve Speech{" "}
             </h1>
             <Accordion className="mt-4" collapseAll>
@@ -380,25 +399,6 @@ export default function aiOutput() {
             </Accordion>
 
             <hr className="py-4 mt-8 mb-4 " />
-            <p className="font-black text-3xl text-center">
-              Average Words Per Minute: {aiOutput.average_word_per_minute}
-            </p>
-            <div>
-              <Banner>
-                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4">
-                  <div className="mx-auto flex items-center">
-                    <p className="flex items-center text-lg font-normal">
-                      <span className="[&_p]:inline">
-                        <span className="">
-                          <span className="font-black">Speed Review:</span>{" "}
-                          {aiOutput.speech_speed}
-                        </span>
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </Banner>
-            </div>
           </Tabs.Item>
           <Tabs.Item title="Emotion Review  ">
             <div className="w-[90%] m-auto flex flex-col items-center text-justify px-8">
@@ -416,7 +416,8 @@ export default function aiOutput() {
                     <p className="flex items-center text-xl font-normal  ">
                       <span className="[&_p]:inline">
                         <span className="">
-                          <span className="font-black">Description</span><br></br>
+                          <span className="font-black">Description</span>
+                          <br></br>
                           {aiOutput.llm_emotion_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis
@@ -436,7 +437,8 @@ export default function aiOutput() {
                     <p className="flex items-center text-xl font-normal">
                       <span className="[&_p]:inline">
                         <span className="">
-                          <span className="font-black">Impact</span><br></br>
+                          <span className="font-black">Impact</span>
+                          <br></br>
                           {aiOutput.llm_emotion_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis &&
                           aiOutput.llm_emotion_analysis.emotional_analysis
@@ -455,23 +457,33 @@ export default function aiOutput() {
           <Tabs.Item title="Speech Review  ">
             <Accordion>
               <Accordion.Panel>
-                <Accordion.Title className="font-black">Noticable Features</Accordion.Title>
+                <Accordion.Title className="font-black">
+                  Noticable Features
+                </Accordion.Title>
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.good
                   ? aiOutput.llm_speech_analysis.good.map((x, i) => {
                       return (
-                        <Accordion.Content><span className="font-bold">{i + 1}.&nbsp;</span>{" "}{x.toString()}</Accordion.Content>
+                        <Accordion.Content>
+                          <span className="font-bold">{i + 1}.&nbsp;</span>{" "}
+                          {x.toString()}
+                        </Accordion.Content>
                       );
                     })
                   : "No Features Found"}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title className="font-black">Noticable Mistakes</Accordion.Title>
+                <Accordion.Title className="font-black">
+                  Noticable Mistakes
+                </Accordion.Title>
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.bad
                   ? aiOutput.llm_speech_analysis.bad.map((x, i) => {
                       return (
-                        <Accordion.Content><span className="font-bold">{i + 1}.&nbsp;</span>{" "}{x.toString()}</Accordion.Content>
+                        <Accordion.Content>
+                          <span className="font-bold">{i + 1}.&nbsp;</span>{" "}
+                          {x.toString()}
+                        </Accordion.Content>
                       );
                     })
                   : "No Mistakes Found"}
