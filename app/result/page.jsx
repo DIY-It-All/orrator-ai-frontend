@@ -5,61 +5,52 @@ import { Tabs } from "flowbite-react";
 import Image from "next/image";
 
 export default function aiOutput() {
-  let temp_res = {
-    audio_analysis: [
-      { Label: "Anger", Score: "99.2%" },
-      { Label: "Fear", Score: "0.0%" },
-      { Label: "Happiness", Score: "0.8%" },
-      { Label: "Neutral", Score: "0.0%" },
-      { Label: "Sadness", Score: "0.0%" },
-      { Label: "Surprise", Score: "0.0%" },
-    ],
+  let temp_res = {  
     audio_transcription:
-      " Alright, so today I'll be giving a demo pitch for the testing of Orator AI. So, Orator AI. The problem is communication is crucial for success in personal as well as professional spaces. Yet, many people face challenges such as ineffective tone modulation, poor body language, inconsistent eye contact and unclear speech. Traditional communication coaching can be costly, inaccessible and lack of personalization and real-time feedback. So, the hypothesis is Orator AI leverages cutting-edge AI models to offer a platform that delivers personalized feedback that too in real-time enabling users to improve communication skills effectively by providing tailored coaching insights users expect to become more confident with their speaking skills. Solution Orator AI offers an AI-powered platform where users can upload short clips of their speeches and presentations. And the system uses advanced AI models such as Wave2vec to access their multiple communication elements including speech clarity, body gestures, eye contact, vocal tone and much more than that. Upon processing, Orator AI generates comprehensive reports highlighting areas for improvement with scores for each aspect, personalized coaching tips and guides the users to enhance their specific skills creating a structured path for better communication. User flow etc etc.",
+      "Alright, so today I'll be giving a demo pitch for the testing of Orator AI. So, Orator AI. The problem is communication is crucial for success in personal as well as professional spaces. Yet, many people face challenges such as ineffective tone modulation, poor body language, inconsistent eye contact and unclear speech. Traditional communication coaching can be costly, inaccessible and lack of personalization and real-time feedback. So, the hypothesis is Orator AI leverages cutting-edge AI models to offer a platform that delivers personalized feedback that too in real-time enabling users to improve communication skills effectively by providing tailored coaching insights users expect to become more confident with their speaking skills. Solution Orator AI offers an AI-powered platform where users can upload short clips of their speeches and presentations. And the system uses advanced AI models such as Wave2vec to access their multiple communication elements including speech clarity, body gestures, eye contact, vocal tone and much more than that. Upon processing, Orator AI generates comprehensive reports highlighting areas for improvement with scores for each aspect, personalized coaching tips and guides the users to enhance their specific skills creating a structured path for better communication. User flow etc etc.",
     average_word_per_minute: 147.86,
     llm_emotion_analysis: {
-      common_emotion: "Anger",
+      common_emotion: "neutral",
       emotional_analysis: {
-        description:
-          "The dominant emotion expressed in the audio analysis is Anger with a score of 99.2%. However, the video frame analysis suggests a mostly neutral facial expression with intermittent frames of anger and surprise. This discrepancy may indicate that the individual is suppressing their emotions or struggling to convey their feelings through body language.",
-        impact:
-          "The intense anger detected in the audio may indicate frustration or irritation, which can negatively impact the delivery and overall quality of the video. The inconsistency between the audio and video emotions may also create a sense of detachment or insincerity, potentially affecting the audience's engagement.",
+          description: "The detected emotion of neutrality suggests that the speaker's emotional expression is predominantly even-keel and calm. This composure likely aids in conveying the message effectively.",
+          impact: "The neutral tone may help the speaker to appear objective and credible, making the message more palatable to the audience."
       },
       suggestions: [
-        "Consider taking a break to calm down and collect your thoughts before recording to reduce the anger in your tone.",
-        "Work on aligning your body language with your emotions, ensuring that your facial expressions and posture convey the intended message.",
-        "Practice relaxation techniques, such as deep breathing or meditation, to better manage your emotions during recording sessions.",
-      ],
-    },
+          "To add emphasis and engage the audience, consider incorporating subtle variations in emotional expression.",
+          "Practice using pauses, inflections, and facial expressions to add depth and nuance to the delivery.",
+          "If the goal is to elicit a specific emotional response from the audience, consider experimenting with different emotional tones and observing the impact."
+      ]
+  }, 
     llm_speech_analysis: {
       good: [
-        "The speech clearly defines the problem and proposes a solution using Orator AI.",
-        "The speaker effectively explains the limitations of traditional communication coaching.",
-        "The speech provides specific examples of AI models used in Orator AI, such as Wave2vec, which adds credibility.",
-        "The platform's user flow is mentioned, showing that the speaker has thought about the functionality of Orator AI.",
+          "Clearly defined problem statement and its relevance to daily life",
+          "Specifics about the AI models used for analysis (e.g., Wave2vec)",
+          "Introduction of a unique solution that attempts to address a pertinent issue",
+          "Explanation of how the platform offers real-time, personalized feedback",
+          "Overview of the features, benefits, and user experience"
       ],
       bad: [
-        "The speech starts with a somewhat vague introduction and takes time to get to the main point.",
-        "The transition between ideas feels abrupt at times, such as moving from the problem statement to the solution without a clear connection.",
-        "Some technical terms like Wave2vec are mentioned without explanation, which might confuse non-technical audience members.",
-        "The speech feels more like a reading of a written description rather than a natural conversation, which can make it less engaging.",
+          "Somewhat technical words like 'Wave2vec' might be unfamiliar to non-tech audience; better explaination could be provided",
+          "Lack of concrete examples or anecdotes to demonstrate the effectiveness of Orator AI",
+          "Several key aspects are rushed through or glossed over (e.g., 'much more than that' for AI-generated reports)",
+          "Assuming a lay audience might struggle to fully grasp technical or AI-related terms",
+          "The phrase 'User flow etc etc.' suggests that crucial information about user interaction was rushed or unfinished"
       ],
       improvements: [
-        "Start with a stronger opening that immediately captures the audience's attention.",
-        "Use more transitional phrases to connect ideas and make the speech feel more cohesive.",
-        "Explain technical terms in simple language to ensure everyone in the audience understands.",
-        "Use more storytelling techniques to make the speech feel more relatable and engaging.",
+          "Use concrete examples or use cases that demonstrate Orator AI's capabilities",
+          "Provide clear explanations for AI-related terms and technology to cater to non-technical audience",
+          "Vary the pacing and delivery to ensure that key points are fully explored and reinforced",
+          "Define what is meant by 'structured path for better communication', offer concrete guidance on skills development",
+          "Visual aids or presentation software would help reinforce the message and add visuals"
       ],
-      speech_speed:
-        "The speech speed is approximately 148 words per minute, which is slightly above the average rate. While it's not too fast, it could be slightly more conversational and relaxed, aiming for an ideal range of 125-135 words per minute.",
+      speech_speed: "A little too fast (147.86 wpm); average ideal for this content might be 120-130 wpm to ensure audience fully absorbs all the information and avoids jargon",
       examples_of_improvements: [
-        "Instead of saying 'The problem is communication is crucial for success in personal as well as professional spaces', you could say 'We've all experienced situations where our words fell flat or didn't convey the message we intended. This is because effective communication is crucial in both personal and professional settings'. This would make the language more relatable and conversational.",
-        "To explain Wave2vec, you could say 'Our AI model uses a state-of-the-art technology called Wave2vec, which allows us to analyze speech patterns and provide actionable feedback'. This would give a brief, clear explanation of the technical term.",
+          "Instead of 'much more than that' for the description of AI-generated reports, consider explaining it in a more concrete manner.",
+          "Consider allocating more time for explanations on each feature and user flow."
       ],
-      overall_speech:
-        "The speech provides a clear overview of Orator AI and its benefits, but it feels somewhat rehearsed and could benefit from more conversational language and storytelling techniques to engage the audience. While the content is well-structured, the speech could be improved with stronger transitions and clearer explanations of technical terms.",
-      score: 74,
-    },
+      overall_speech: "The speech effectively delivers the core idea of Orator AI but could greatly benefit from slowing down its delivery and providing more depth and clarity in some of its key areas. Providing concrete examples to solidify these concepts and enhance audience understanding is a must.",
+      score: 84
+  },
     video_frame_analysis: {
       0: { neutral: 0.94 },
       1: { neutral: 0.98 },
@@ -150,9 +141,7 @@ export default function aiOutput() {
       86: { angry: 0.51 },
       87: { neutral: 0.94 },
       88: { neutral: 0.95 },
-    },
-    speech_speed:
-      "The speech speed is approximately 148 words per minute, which is slightly above the average rate. While it's not too fast, it could be slightly more conversational and relaxed, aiming for an ideal range of 125-135 words per minute.",
+    } 
   };
   const [aiOutput, setAIOutput] = useState(temp_res);
   useEffect(() => {
@@ -391,7 +380,7 @@ export default function aiOutput() {
                       <span className="[&_p]:inline">
                         <span className="">
                           <span className="font-black">Speed Review:</span>{" "}
-                          {aiOutput.speech_speed}
+                          {aiOutput.llm_speech_analysis.speech_speed}
                         </span>
                       </span>
                     </p>
