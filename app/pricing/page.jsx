@@ -1,4 +1,6 @@
+"use client"
 import React from "react"; 
+import { buyPremium} from "../components/payment";
 
 function Pricing() {
   return (
@@ -116,6 +118,7 @@ function Pricing() {
               <a
                 href="#"
                 className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                onClick = {()=>{buyPremium("0.005")}}
               >
                 Get started
               </a>
@@ -248,6 +251,7 @@ function Pricing() {
               <a
                 href="#"
                 className="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                onClick = {()=>{buyPremium("0.05")}}
               >
                 Get started
               </a>
