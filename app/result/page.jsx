@@ -6,53 +6,153 @@ import Image from "next/image";
 
 export default function aiOutput() {
   let temp_res = {
+    audio_analysis: [
+      { Label: "Anger", Score: "99.2%" },
+      { Label: "Fear", Score: "0.0%" },
+      { Label: "Happiness", Score: "0.8%" },
+      { Label: "Neutral", Score: "0.0%" },
+      { Label: "Sadness", Score: "0.0%" },
+      { Label: "Surprise", Score: "0.0%" },
+    ],
+    audio_transcription:
+      " Alright, so today I'll be giving a demo pitch for the testing of Orator AI. So, Orator AI. The problem is communication is crucial for success in personal as well as professional spaces. Yet, many people face challenges such as ineffective tone modulation, poor body language, inconsistent eye contact and unclear speech. Traditional communication coaching can be costly, inaccessible and lack of personalization and real-time feedback. So, the hypothesis is Orator AI leverages cutting-edge AI models to offer a platform that delivers personalized feedback that too in real-time enabling users to improve communication skills effectively by providing tailored coaching insights users expect to become more confident with their speaking skills. Solution Orator AI offers an AI-powered platform where users can upload short clips of their speeches and presentations. And the system uses advanced AI models such as Wave2vec to access their multiple communication elements including speech clarity, body gestures, eye contact, vocal tone and much more than that. Upon processing, Orator AI generates comprehensive reports highlighting areas for improvement with scores for each aspect, personalized coaching tips and guides the users to enhance their specific skills creating a structured path for better communication. User flow etc etc.",
+    average_word_per_minute: 147.86,
     llm_emotion_analysis: {
       common_emotion: "Anger",
       emotional_analysis: {
         description:
-          "The audio analysis detected a high level of anger, with a score of 99.2%. Although the video frame analysis showed a predominantly neutral tone, there were notable instances of angry expressions detected in frames 11, 18, 43, 46, 69, 70, 86. These instances suggest that the speaker's emotional state is not neutral, but rather, is characterized by suppressed anger that occasionally manifests in their facial expressions.",
+          "The dominant emotion expressed in the audio analysis is Anger with a score of 99.2%. However, the video frame analysis suggests a mostly neutral facial expression with intermittent frames of anger and surprise. This discrepancy may indicate that the individual is suppressing their emotions or struggling to convey their feelings through body language.",
         impact:
-          "The prominent anger detected in the audio analysis may impact the delivery of the message, as it may come across as confrontational or aggressive to the audience. The neutral tone in the video frame analysis may not effectively convey the intended message, as the inconsistency between the audio and video emotions may create a sense of discomfort or unease.",
+          "The intense anger detected in the audio may indicate frustration or irritation, which can negatively impact the delivery and overall quality of the video. The inconsistency between the audio and video emotions may also create a sense of detachment or insincerity, potentially affecting the audience's engagement.",
       },
       suggestions: [
-        "Manage your emotions before speaking to ensure a more neutral tone.",
-        "Practice relaxation techniques to reduce anger and promote a more composed demeanor.",
-        "Consider taking a moment to collect your thoughts before responding to a question or making a statement.",
-        "Work on maintaining a consistent tone in both your audio and video expressions to create a more cohesive message.",
+        "Consider taking a break to calm down and collect your thoughts before recording to reduce the anger in your tone.",
+        "Work on aligning your body language with your emotions, ensuring that your facial expressions and posture convey the intended message.",
+        "Practice relaxation techniques, such as deep breathing or meditation, to better manage your emotions during recording sessions.",
       ],
     },
     llm_speech_analysis: {
       good: [
-        "Started with a clear and concise problem statement that establishes the relevance of the solution",
-        "Effectively identified the pain points of traditional communication coaching",
-        "Clearly explained the hypothesis and how Orator AI addresses the problem",
-        "Provided a structured overview of the solution, including its key features and benefits",
-        "Demonstrated enthusiasm and passion for the product",
+        "The speech clearly defines the problem and proposes a solution using Orator AI.",
+        "The speaker effectively explains the limitations of traditional communication coaching.",
+        "The speech provides specific examples of AI models used in Orator AI, such as Wave2vec, which adds credibility.",
+        "The platform's user flow is mentioned, showing that the speaker has thought about the functionality of Orator AI.",
       ],
       bad: [
-        "Started with a somewhat generic phrase 'communication is crucial for success', consider starting with a more impactful statement",
-        "Used the word 'feedback' twice in a row, try to rephrase for better clarity",
-        "Some sentences were a bit long and convoluted, consider breaking them up for better flow",
-        "Used technical terms like 'SGII models' without explaining them, may be confusing for non-technical audience",
-        "Ended somewhat abruptly, consider summarizing key points or calling to action",
+        "The speech starts with a somewhat vague introduction and takes time to get to the main point.",
+        "The transition between ideas feels abrupt at times, such as moving from the problem statement to the solution without a clear connection.",
+        "Some technical terms like Wave2vec are mentioned without explanation, which might confuse non-technical audience members.",
+        "The speech feels more like a reading of a written description rather than a natural conversation, which can make it less engaging.",
       ],
       improvements: [
-        "Use more nuanced language to describe the problem statement, e.g., instead of 'ineffective tone modulation', try ' struggling to convey confidence through tone'",
-        "Emphasize the benefits of Orator AI, e.g., 'become more confident in their speaking skills', try 'unleash their full potential as effective communicators'",
-        "Use storytelling techniques to make the solution more relatable and memorable",
-        "Use visuals or examples to illustrate the features and benefits of Orator AI",
-        "Consider a stronger call-to-action at the end",
+        "Start with a stronger opening that immediately captures the audience's attention.",
+        "Use more transitional phrases to connect ideas and make the speech feel more cohesive.",
+        "Explain technical terms in simple language to ensure everyone in the audience understands.",
+        "Use more storytelling techniques to make the speech feel more relatable and engaging.",
       ],
+      speech_speed:
+        "The speech speed is approximately 148 words per minute, which is slightly above the average rate. While it's not too fast, it could be slightly more conversational and relaxed, aiming for an ideal range of 125-135 words per minute.",
       examples_of_improvements: [
-        "Instead of 'the hypothesis is Orator AI leverages cutting SGII models', consider 'we believe that Orator AI, powered by cutting-edge AI technology, can revolutionize the way we communicate'",
-        "Instead of 'generate comprehensive reports', consider 'provide actionable insights that help users tackle their communication challenges head-on'",
-        "Instead of 'creating a structured path for better communication', consider 'guiding users on a journey of self-improvement and growth'",
+        "Instead of saying 'The problem is communication is crucial for success in personal as well as professional spaces', you could say 'We've all experienced situations where our words fell flat or didn't convey the message we intended. This is because effective communication is crucial in both personal and professional settings'. This would make the language more relatable and conversational.",
+        "To explain Wave2vec, you could say 'Our AI model uses a state-of-the-art technology called Wave2vec, which allows us to analyze speech patterns and provide actionable feedback'. This would give a brief, clear explanation of the technical term.",
       ],
       overall_speech:
-        "The overall speed was moderate, with some moments where the presenter seemed to slow down to gather thoughts. It would be beneficial to practice the pitch to deliver it at a slightly faster pace while maintaining clarity.",
-      score: 82,
+        "The speech provides a clear overview of Orator AI and its benefits, but it feels somewhat rehearsed and could benefit from more conversational language and storytelling techniques to engage the audience. While the content is well-structured, the speech could be improved with stronger transitions and clearer explanations of technical terms.",
+      score: 74,
     },
-    // failed: "teu"
+    video_frame_analysis: {
+      0: { neutral: 0.94 },
+      1: { neutral: 0.98 },
+      2: { neutral: 0.98 },
+      3: { neutral: 0.51 },
+      4: { neutral: 0.98 },
+      5: { neutral: 0.99 },
+      6: { neutral: 0.97 },
+      7: { neutral: 0.98 },
+      8: { neutral: 0.99 },
+      9: { neutral: 0.75 },
+      10: { neutral: 0.99 },
+      11: { angry: 0.51 },
+      12: { neutral: 1 },
+      13: { neutral: 0.56 },
+      14: { neutral: 0.91 },
+      15: { neutral: 0.73 },
+      16: { neutral: 0.98 },
+      17: { neutral: 0.99 },
+      18: { angry: 0.84 },
+      19: { neutral: 0.99 },
+      20: { neutral: 0.97 },
+      21: { neutral: 0.8 },
+      22: { neutral: 0.62 },
+      23: { surprise: 0.54 },
+      24: { neutral: 0.95 },
+      25: { neutral: 0.71 },
+      26: { neutral: 0.8 },
+      27: { neutral: 0.35 },
+      28: { neutral: 0.93 },
+      29: { neutral: 0.99 },
+      30: { neutral: 0.9 },
+      31: { neutral: 0.81 },
+      32: { neutral: 0.99 },
+      33: { neutral: 0.99 },
+      34: { neutral: 0.99 },
+      35: { neutral: 0.98 },
+      36: { neutral: 0.99 },
+      37: { neutral: 0.91 },
+      38: { neutral: 0.99 },
+      39: { surprise: 0.95 },
+      40: { neutral: 0.57 },
+      41: { neutral: 0.94 },
+      42: { neutral: 0.87 },
+      43: { angry: 0.93 },
+      44: { neutral: 0.85 },
+      45: { neutral: 0.82 },
+      46: { angry: 0.53 },
+      47: { surprise: 0.63 },
+      48: { neutral: 0.96 },
+      49: { neutral: 0.95 },
+      50: { neutral: 0.96 },
+      51: { neutral: 0.8 },
+      52: { neutral: 0.98 },
+      53: { neutral: 0.98 },
+      54: { neutral: 0.98 },
+      55: { neutral: 0.84 },
+      56: { neutral: 1 },
+      57: { neutral: 0.99 },
+      58: { neutral: 0.69 },
+      59: { neutral: 0.81 },
+      60: { neutral: 0.89 },
+      61: { neutral: 0.99 },
+      62: { neutral: 1 },
+      63: { neutral: 0.99 },
+      64: { neutral: 0.67 },
+      65: { neutral: 0.93 },
+      66: { neutral: 0.63 },
+      67: { neutral: 0.53 },
+      68: { neutral: 0.86 },
+      69: { angry: 0.59 },
+      70: { angry: 0.92 },
+      71: { neutral: 0.99 },
+      72: { surprise: 0.86 },
+      73: { neutral: 0.95 },
+      74: { neutral: 0.95 },
+      75: { neutral: 0.99 },
+      76: { neutral: 0.99 },
+      77: { neutral: 0.94 },
+      78: { neutral: 0.51 },
+      79: { neutral: 0.96 },
+      80: { neutral: 0.99 },
+      81: { neutral: 0.99 },
+      82: { neutral: 0.65 },
+      83: { neutral: 0.55 },
+      84: { neutral: 0.98 },
+      85: { neutral: 0.81 },
+      86: { angry: 0.51 },
+      87: { neutral: 0.94 },
+      88: { neutral: 0.95 },
+    },
+    speech_speed:
+      "The speech speed is approximately 148 words per minute, which is slightly above the average rate. While it's not too fast, it could be slightly more conversational and relaxed, aiming for an ideal range of 125-135 words per minute.",
   };
   const [aiOutput, setAIOutput] = useState(temp_res);
   useEffect(() => {
@@ -84,26 +184,25 @@ export default function aiOutput() {
         default: "flex-wrap border-b border-gray-200 dark:border-gray-700",
         underline:
           "-mb-px flex-wrap border-b border-gray-200 dark:border-gray-700",
-        pills:
-          "flex-wrap space-x-2 text-sm font-medium text-gray-500 dark:text-gray-400",
+        pills: "flex-wrap space-x-2 text-sm font-medium text-gray-500 ",
         fullWidth:
-          "grid w-full grid-flow-col divide-x divide-gray-200 rounded-none text-sm font-medium shadow dark:divide-gray-700 dark:text-gray-400",
+          "grid w-full grid-flow-col divide-x divide-gray-200 rounded-none text-sm font-medium shadow dark:divide-gray-700 ",
       },
       tabitem: {
-        base: "flex items-center justify-center rounded-t-lg p-4 text-sm font-medium first:ml-0 focus:outline-none focus:ring-4 focus:ring-purple-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500",
+        base: "flex items-center justify-center rounded-t-lg p-4 text-sm font-medium first:ml-0 focus:outline-none focus:ring-4 focus:ring-purple-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:",
         variant: {
           default: {
             base: "rounded-t-lg",
             active: {
-              on: "bg-gray-100 text-purple-600 dark:bg-gray-800 dark:text-purple-500",
-              off: "text-gray-500 hover:bg-gray-50 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300",
+              on: "bg-gray-100 text-purple-600 dark:bg-gray-800 ",
+              off: "text-gray-500 hover:bg-gray-50 hover:text-gray-600  dark:hover:bg-gray-800 dark:hover:text-gray-300",
             },
           },
           underline: {
             base: "rounded-t-lg",
             active: {
-              on: "active rounded-t-lg border-b-2 border-purple-600 text-purple-600 dark:border-purple-500 dark:text-purple-500",
-              off: "border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300",
+              on: "active rounded-t-lg border-b-2 border-purple-600 text-purple-600 dark:border-purple-500 ",
+              off: "border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-600  dark:hover:text-gray-300",
             },
           },
           pills: {
@@ -116,7 +215,7 @@ export default function aiOutput() {
           fullWidth: {
             base: "ml-0 flex w-full rounded-none first:ml-0",
             active: {
-              on: "active rounded-none bg-gray-100 p-4 text-gray-900 dark:bg-gray-700 dark:text-white",
+              on: "active rounded-none bg-gray-100 p-4 text-gray-900 dark:bg-gray-700",
               off: "rounded-none bg-white hover:bg-gray-50 hover:text-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white",
             },
           },
@@ -205,9 +304,9 @@ export default function aiOutput() {
               </p>
               <div>
                 <Banner>
-                  <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+                  <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4">
                     <div className="mx-auto flex items-center">
-                      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+                      <p className="flex items-center text-lg font-normal">
                         <span className="[&_p]:inline">
                           <span className="">
                             <span className="font-black">Speech Review:</span>{" "}
@@ -220,12 +319,12 @@ export default function aiOutput() {
                 </Banner>
               </div>
             </div>
-            <h1 className="font-bold text-3xl text-center">
+            <h1 className="font-bold text-3xl text-center m-4">
               Personalised Suggestions to Improve Speech{" "}
             </h1>
-            <Accordion collapseAll>
+            <Accordion className="mt-4" collapseAll>
               <Accordion.Panel>
-                <Accordion.Title>
+                <Accordion.Title className="font-black">
                   Facial and Emotional Recommendations
                 </Accordion.Title>
 
@@ -233,32 +332,45 @@ export default function aiOutput() {
                 aiOutput.llm_emotion_analysis.suggestions
                   ? aiOutput.llm_emotion_analysis.suggestions.map((x, i) => {
                       return (
-                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                        <Accordion.Content>
+                          <span className="font-bold">{i + 1}.&nbsp;</span>{" "}
+                          {x.toString()}
+                        </Accordion.Content>
                       );
                     })
                   : "No Suggestions Found"}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title>Verbal Improvements</Accordion.Title>
+                <Accordion.Title className="font-black">
+                  Verbal Improvements
+                </Accordion.Title>
 
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.improvements
                   ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
                       return (
-                        <Accordion.Content>{x.toString()}</Accordion.Content>
+                        <Accordion.Content>
+                          <span className="font-bold">{i + 1}.&nbsp;</span>{" "}
+                          {x.toString()}
+                        </Accordion.Content>
                       );
                     })
                   : "No Improvements Found"}
               </Accordion.Panel>
               <Accordion.Panel>
-                <Accordion.Title>Improvement Example Points</Accordion.Title>
+                <Accordion.Title className="font-black">
+                  Improvement Example Points
+                </Accordion.Title>
 
                 {aiOutput.llm_speech_analysis &&
                 aiOutput.llm_speech_analysis.improvements
                   ? aiOutput.llm_speech_analysis.improvements.map((x, i) => {
                       return (
                         <>
-                          <Accordion.Content>{x.toString()}</Accordion.Content>
+                          <Accordion.Content>
+                            <span className="font-bold">{i + 1}.&nbsp;</span>{" "}
+                            {x.toString()}
+                          </Accordion.Content>
                         </>
                       );
                     })
@@ -267,12 +379,25 @@ export default function aiOutput() {
             </Accordion>
 
             <hr className="py-4 mt-8 mb-4 " />
-            <div className="m-auto w-[80%] h-8 bg-slate-300 overflow-hidden">
-              <div className="h-full bg-purple-500 -translate-x-20 -skew-x-[22.5deg] w-[40%]"></div>
-            </div>
             <p className="font-black text-3xl text-center">
               Average Words Per Minute: {aiOutput.average_word_per_minute}
             </p>
+            <div>
+              <Banner>
+                <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4">
+                  <div className="mx-auto flex items-center">
+                    <p className="flex items-center text-lg font-normal">
+                      <span className="[&_p]:inline">
+                        <span className="">
+                          <span className="font-black">Speed Review:</span>{" "}
+                          {aiOutput.speech_speed}
+                        </span>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </Banner>
+            </div>
           </Tabs.Item>
           <Tabs.Item title="Emotion Review  ">
             <div className="w-[90%] m-auto flex flex-col items-center text-center px-8">
@@ -307,7 +432,7 @@ export default function aiOutput() {
               <Banner>
                 <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
                   <div className="mx-auto flex items-center">
-                    <p className="flex items-center text-xl font-normal text-gray-500 dark:text-gray-400">
+                    <p className="flex items-center text-xl font-normal text-gray-500 ">
                       <span className="[&_p]:inline">
                         <span className="">
                           <span className="font-black">Description:</span>
@@ -327,7 +452,7 @@ export default function aiOutput() {
               <Banner>
                 <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
                   <div className="mx-auto flex items-center">
-                    <p className="flex items-center text-xl font-normal text-gray-500 dark:text-gray-400">
+                    <p className="flex items-center text-xl font-normal text-gray-500 ">
                       <span className="[&_p]:inline">
                         <span className="">
                           <span className="font-black">Impact:</span>

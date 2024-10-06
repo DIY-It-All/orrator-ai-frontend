@@ -98,29 +98,7 @@ export default function Dashboard() {
                   Upload your video(prefferably .mp4) and watch the AI do it's
                   magic
                 </p>
-                <div className="flex w-full">
-                  <input
-                    type="text"
-                    id="speech_prompt"
-                    placeholder="Simple desciption of your speech's topic"
-                    className="input input-ghost input-primary  rounded-r-none grow"
-                  />
-                  <button className="btn btn-primary glass  rounded-l-none btn-outline border-l-0        stroke-slate-700 hover:stroke-slate-300 fill-blue-100 hover:fill-blue-400">
-                    <svg
-                      className="w-full h-full p-2 stroke-slate-700 hover:stroke-slate-300 fill-blue-100 hover:fill-blque-400"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 19.9 19.7"
-                      transform="scale(-1, 1)"
-                      strokeWidth="2"
-                    >
-                      <g className="search-path">
-                        <path strokeLinecap="square" d="M18.5 18.3l-5.4-5.4" />
-                        <circle cx="8" cy="8" r="7" />
-                      </g>
-                    </svg>
-                  </button>
-                </div>
+
                 <div className="flex w-full items-center justify-center">
                   <Label
                     htmlFor="dropzone-file"
@@ -169,34 +147,15 @@ export default function Dashboard() {
                     />
                   </Label>
                 </div>
-                {/* <a
-                href="#"
-                className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 600 purple-700 focus:outline-none purple-800"
-                onClick={() => {
-                  document.querySelector("#videoUpload").click();
-                }}
-              >
-                Upload Video
-              </a>
-
-              <input
-                type="file"
-                name="video_upload"
-                id="videoUpload"
-                accept=".mp4"
-                className="hidden"
-                onChange={(ev) => {
-                  console.log(ev.target.files[0]);
-                  document.querySelector("video").src = URL.createObjectURL(
-                    ev.target.files[0]
-                  );
-                  document
-                    .querySelector("#continue")
-                    .classList.remove("hidden");
-                  document.querySelector("video").pause();
-                }}
-              /> */}
-
+                <div className="flex w-full py-4 ">
+                  <input
+                    type="text"
+                    id="speech_prompt"
+                    placeholder="Give a simple desciption about the topic of your speech"
+                    className="input input-ghost input-primary grow"
+                  />
+                </div>
+               
                 <video
                   src=""
                   className="p-6 my-4 hidden"
