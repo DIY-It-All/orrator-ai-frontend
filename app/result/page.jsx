@@ -271,7 +271,7 @@ export default function aiOutput() {
               <div className="h-full bg-purple-500 -translate-x-20 -skew-x-[22.5deg] w-[40%]"></div>
             </div>
             <p className="font-black text-3xl text-center">
-              Average Words Per Minute: {aiOutput.llm_speech_analysis.score}
+              Average Words Per Minute: {aiOutput.average_word_per_minute}
             </p>
           </Tabs.Item>
           <Tabs.Item title="Emotion Review  ">
