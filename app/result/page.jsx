@@ -204,10 +204,11 @@ export default function aiOutput() {
                 Score: {aiOutput.llm_speech_analysis.score}
               </p>
               <div>
-                <Banner>
-                  <div className="flex w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+                <Banner>  
+
+                  <div className="flex flex-col w-[87%] m-auto my-4 justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900 text-lg font-bold">
                     <div className="mx-auto flex items-center">
-                      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+                      <p className="flex items-center text-md font-normal text-gray-700 dark:text-gray-600">
                         <span className="[&_p]:inline">
                           <span className="">
                             <span className="font-black">Speech Review:</span>{" "}
@@ -216,13 +217,25 @@ export default function aiOutput() {
                         </span>
                       </p>
                     </div>
-                  </div>
+                    <hr />
+                    <div className="mx-auto flex items-center">
+                      <p className="flex items-center text-md font-normal text-gray-700 dark:text-gray-600">
+                        <span className="[&_p]:inline">
+                          <span className="">
+                            <span className="font-black">Speech Speed Review:</span>{" "}
+                            {aiOutput.llm_speech_analysis.speech_speed}
+                          </span>
+                        </span>
+                      </p>
+                    </div>
+                  </div> 
                 </Banner>
               </div>
             </div>
-            <h1 className="font-bold text-3xl text-center">
+            <h1 className="font-bold text-3xl text-center p-2 m-2">
               Personalised Suggestions to Improve Speech{" "}
             </h1>
+
             <Accordion collapseAll>
               <Accordion.Panel>
                 <Accordion.Title>

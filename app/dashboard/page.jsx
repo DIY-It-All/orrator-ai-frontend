@@ -32,7 +32,7 @@ export default function Dashboard() {
     }
 
     if (loading && progress != 100 && !ai_output && ai_output.length == 0) {
-      setProgress(lerp(progress, 99, 0.00005));
+      setProgress(lerp(progress, 101, 0.0000025));
       if (progress > 100) {
         setProgress(100);
         // setTimeout(() => {
